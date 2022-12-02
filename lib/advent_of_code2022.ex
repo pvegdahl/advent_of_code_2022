@@ -13,6 +13,9 @@ defmodule AdventOfCode2022 do
 
   """
   def hello do
+    IO.puts("something")
     :world
   end
 end
+
+AdventOfCode2022.hello()
