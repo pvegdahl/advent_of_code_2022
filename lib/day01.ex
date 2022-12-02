@@ -20,7 +20,19 @@ defmodule Day01 do
     to_list_of_lists(input_tail, [[input_head | result_head] | result_tail])
   end
 
-  def part_a(path) do
-    nil
+  def part_a() do
+    parse_input("puzzle_input/day01.txt")
+    |> to_list_of_lists([])
+    |> Stream.map(&Enum.sum/1)
+    |> Enum.max()
+  end
+
+  def part_b() do
+    parse_input("puzzle_input/day01.txt")
+    |> to_list_of_lists([])
+    |> Stream.map(&Enum.sum/1)
+    |> Enum.sort(:desc)
+    |> Stream.take(3)
+    |> Enum.sum()
   end
 end
