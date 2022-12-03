@@ -43,4 +43,18 @@ defmodule Day02Test do
     assert Day02.rps_throw_to_points(:scissors) == 3
   end
 
+  test "One game to points" do
+    assert Day02.game_points({:paper, :rock}) == 1
+    assert Day02.game_points({:scissors, :paper}) == 2
+    assert Day02.game_points({:rock, :scissors}) == 3
+
+    assert Day02.game_points({:rock, :rock}) == 4
+    assert Day02.game_points({:paper, :paper}) == 5
+    assert Day02.game_points({:scissors, :scissors}) == 6
+
+    assert Day02.game_points({:scissors, :rock}) == 7
+    assert Day02.game_points({:rock, :paper}) == 8
+    assert Day02.game_points({:paper, :scissors}) == 9
+  end
+
 end
