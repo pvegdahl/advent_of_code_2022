@@ -42,6 +42,18 @@ defmodule Day02 do
     |> score_list_of_games()
   end
 
+  def get_throw_for_desired_result(them, :tie), do: them
+  def get_throw_for_desired_result(them, :win), do: win(them)
+  def get_throw_for_desired_result(them, :loss), do: loss(them)
+
+  def win(:rock), do: :paper
+  def win(:paper), do: :scissors
+  def win(:scissors), do: :rock
+
+  def loss(:rock), do: :scissors
+  def loss(:paper), do: :rock
+  def loss(:scissors), do: :paper
+
   def part_b() do
     nil
   end

@@ -61,4 +61,18 @@ defmodule Day02Test do
     assert Day02.score_list_of_games(["A Y", "B X", "C Z"]) == 15
   end
 
+  test "Get the right throw for part B" do
+    assert Day02.get_throw_for_desired_result(:rock, :tie) == :rock
+    assert Day02.get_throw_for_desired_result(:paper, :tie) == :paper
+    assert Day02.get_throw_for_desired_result(:scissors, :tie) == :scissors
+
+    assert Day02.get_throw_for_desired_result(:rock, :loss) == :scissors
+    assert Day02.get_throw_for_desired_result(:paper, :loss) == :rock
+    assert Day02.get_throw_for_desired_result(:scissors, :loss) == :paper
+
+    assert Day02.get_throw_for_desired_result(:rock, :win) == :paper
+    assert Day02.get_throw_for_desired_result(:paper, :win) == :scissors
+    assert Day02.get_throw_for_desired_result(:scissors, :win) == :rock
+  end
+
 end
