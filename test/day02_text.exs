@@ -85,4 +85,16 @@ defmodule Day02Test do
     assert Day02.letter_to_atom("Z") == :win
   end
 
+  test "parse a line into a rps/wld tuple" do
+    assert Day02.parse_line_b("A Z") == {:rock, :paper}
+    assert Day02.parse_line_b("B Y") == {:paper, :paper}
+    assert Day02.parse_line_b("C X") == {:scissors, :paper}
+    assert Day02.parse_line_b("C Y") == {:scissors, :scissors}
+    assert Day02.parse_line_b("C Z") == {:scissors, :rock}
+  end
+
+  test "The example input B" do
+    assert Day02.score_list_of_games_b(["A Y", "B X", "C Z"]) == 12
+  end
+
 end

@@ -61,6 +61,24 @@ defmodule Day02 do
   def letter_to_atom("Y"), do: :tie
   def letter_to_atom("Z"), do: :win
 
+  def atom_pair_b_to_throws({them, result}) do
+    {them, get_throw_for_desired_result(them, result)}
+  end
+
+  def parse_line_b(line) do
+    String.split(line)
+    |> Enum.map(&letter_to_atom/1)
+    |> List.to_tuple()
+    |> atom_pair_b_to_throws()
+  end
+
+  def score_list_of_games_b(list_of_games) do
+    list_of_games
+    |> Enum.map(&parse_line_b/1)
+    |> Enum.map(&game_points/1)
+    |> Enum.sum()
+  end
+
   def part_b() do
     nil
   end
