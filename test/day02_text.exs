@@ -31,4 +31,10 @@ defmodule Day02Test do
     assert Day02.rps_result({:rock, :paper}) == :win
   end
 
+  test "win/loss/tie to points" do
+    assert Day02.rps_result_to_points(:win) == 6
+    assert Day02.rps_result_to_points(:tie) == 3
+    assert Day02.rps_result_to_points(:loss) == 0
+  end
+
 end

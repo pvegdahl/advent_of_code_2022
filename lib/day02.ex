@@ -23,6 +23,10 @@ defmodule Day02 do
   def rps_result({:paper, :rock}), do: :loss
   def rps_result(_), do: :win
 
+  def rps_result_to_points(:win), do: 6
+  def rps_result_to_points(:tie), do: 3
+  def rps_result_to_points(:loss), do: 0
+
   def part_a() do
     parse_input("puzzle_input/day02.txt")
   end
