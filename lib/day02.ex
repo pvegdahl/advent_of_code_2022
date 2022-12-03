@@ -1,9 +1,4 @@
 defmodule Day02 do
-  def parse_input(path) do
-    File.stream!(path, [:utf8])
-    |> Stream.map(&parse_line/1)
-  end
-
   def parse_line(line) do
     String.split(line)
     |> Enum.map(&letter_to_rpc/1)
@@ -48,7 +43,7 @@ defmodule Day02 do
   end
 
   def part_b() do
-    parse_input("puzzle_input/day02.txt")
+    nil
   end
 end
 
