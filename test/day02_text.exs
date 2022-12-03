@@ -57,4 +57,8 @@ defmodule Day02Test do
     assert Day02.game_points({:paper, :scissors}) == 9
   end
 
+  test "The example input" do
+    assert Day02.score_list_of_games(["A Y", "B X", "C Z"]) == 15
+  end
+
 end

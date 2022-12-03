@@ -35,6 +35,13 @@ defmodule Day02 do
     rps_throw_to_points(us) + (rps_result({them, us}) |> rps_result_to_points)
   end
 
+  def score_list_of_games(list_of_games) do
+    list_of_games
+    |> Enum.map(&parse_line/1)
+    |> Enum.map(&game_points/1)
+    |> Enum.sum()
+  end
+
   def part_a() do
     parse_input("puzzle_input/day02.txt")
   end
