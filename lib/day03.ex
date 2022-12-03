@@ -3,6 +3,8 @@ defmodule Day03 do
     []
   end
 
+  def half_lines(line), do: String.split_at(line, div(String.length(line), 2))
+
   def part_a() do
     # File.stream!("puzzle_input/day03.txt", [:utf8])
   end
@@ -12,5 +14,5 @@ defmodule Day03 do
   end
 end
 
-IO.puts("Part A: #{Day02.part_a()}")
-IO.puts("Part B: #{Day02.part_b()}")
+# IO.puts("Part A: #{Day03.part_a()}")
+# IO.puts("Part B: #{Day03.part_b()}")
