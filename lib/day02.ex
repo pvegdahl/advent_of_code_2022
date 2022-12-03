@@ -80,8 +80,10 @@ defmodule Day02 do
   end
 
   def part_b() do
-    nil
+    File.stream!("puzzle_input/day02.txt", [:utf8])
+    |> score_list_of_games_b()
   end
 end
 
 IO.puts("Part A: #{Day02.part_a()}")
+IO.puts("Part B: #{Day02.part_b()}")
