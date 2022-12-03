@@ -43,10 +43,13 @@ defmodule Day02 do
   end
 
   def part_a() do
-    parse_input("puzzle_input/day02.txt")
+    File.stream!("puzzle_input/day02.txt", [:utf8])
+    |> score_list_of_games()
   end
 
   def part_b() do
     parse_input("puzzle_input/day02.txt")
   end
 end
+
+IO.puts("Part A: #{Day02.part_a()}")
