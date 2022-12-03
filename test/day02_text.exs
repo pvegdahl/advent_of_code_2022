@@ -2,14 +2,14 @@ defmodule Day02Test do
   use ExUnit.Case
 
   test "letters are parsed into correct rps" do
-    assert Day02.letter_to_rpc("A") == :rock
-    assert Day02.letter_to_rpc("B") == :paper
-    assert Day02.letter_to_rpc("C") == :scissors
+    assert Day02.letter_to_rps("A") == :rock
+    assert Day02.letter_to_rps("B") == :paper
+    assert Day02.letter_to_rps("C") == :scissors
 
-    assert Day02.letter_to_rpc("X") == :rock
-    assert Day02.letter_to_rpc("Y") == :paper
-    assert Day02.letter_to_rpc("Z") == :scissors
-    end
+    assert Day02.letter_to_rps("X") == :rock
+    assert Day02.letter_to_rps("Y") == :paper
+    assert Day02.letter_to_rps("Z") == :scissors
+  end
 
   test "parse a line into a rps tuple" do
     assert Day02.parse_line("A Z") == {:rock, :scissors}
@@ -73,6 +73,16 @@ defmodule Day02Test do
     assert Day02.get_throw_for_desired_result(:rock, :win) == :paper
     assert Day02.get_throw_for_desired_result(:paper, :win) == :scissors
     assert Day02.get_throw_for_desired_result(:scissors, :win) == :rock
+  end
+
+  test "letters are parsed into correct atom (part B)" do
+    assert Day02.letter_to_atom("A") == :rock
+    assert Day02.letter_to_atom("B") == :paper
+    assert Day02.letter_to_atom("C") == :scissors
+
+    assert Day02.letter_to_atom("X") == :loss
+    assert Day02.letter_to_atom("Y") == :tie
+    assert Day02.letter_to_atom("Z") == :win
   end
 
 end

@@ -1,16 +1,16 @@
 defmodule Day02 do
   def parse_line(line) do
     String.split(line)
-    |> Enum.map(&letter_to_rpc/1)
+    |> Enum.map(&letter_to_rps/1)
     |> List.to_tuple()
   end
 
-  def letter_to_rpc("A"), do: :rock
-  def letter_to_rpc("B"), do: :paper
-  def letter_to_rpc("C"), do: :scissors
-  def letter_to_rpc("X"), do: :rock
-  def letter_to_rpc("Y"), do: :paper
-  def letter_to_rpc("Z"), do: :scissors
+  def letter_to_rps("A"), do: :rock
+  def letter_to_rps("B"), do: :paper
+  def letter_to_rps("C"), do: :scissors
+  def letter_to_rps("X"), do: :rock
+  def letter_to_rps("Y"), do: :paper
+  def letter_to_rps("Z"), do: :scissors
 
   def rps_result({same, same}), do: :tie
   def rps_result({:rock, :scissors}), do: :loss
@@ -53,6 +53,13 @@ defmodule Day02 do
   def loss(:rock), do: :scissors
   def loss(:paper), do: :rock
   def loss(:scissors), do: :paper
+
+  def letter_to_atom("A"), do: :rock
+  def letter_to_atom("B"), do: :paper
+  def letter_to_atom("C"), do: :scissors
+  def letter_to_atom("X"), do: :loss
+  def letter_to_atom("Y"), do: :tie
+  def letter_to_atom("Z"), do: :win
 
   def part_b() do
     nil
