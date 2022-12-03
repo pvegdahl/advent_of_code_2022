@@ -37,4 +37,10 @@ defmodule Day02Test do
     assert Day02.rps_result_to_points(:loss) == 0
   end
 
+  test "throw type to points" do
+    assert Day02.rps_throw_to_points(:rock) == 1
+    assert Day02.rps_throw_to_points(:paper) == 2
+    assert Day02.rps_throw_to_points(:scissors) == 3
+  end
+
 end
