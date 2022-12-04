@@ -6,8 +6,7 @@ defmodule Day03 do
     mapset_a = String.codepoints(string_a) |> MapSet.new()
     mapset_b = String.codepoints(string_b) |> MapSet.new()
     MapSet.intersection(mapset_a, mapset_b)
-    |> MapSet.to_list()
-    |> List.first()
+    |> Enum.at(0)
   end
 
   def letter_to_priority(letter) do
@@ -36,6 +35,14 @@ defmodule Day03 do
   end
 
   def group_by_3(lines), do: Enum.chunk_every(lines, 3)
+
+  def common_element(strings) do
+    Stream.map(strings, &String.codepoints/1)
+    |> Stream.map(&MapSet.new/1)
+    |> Enum.reduce(&MapSet.intersection/2)
+    |> Enum.at(0)
+  end
+
 
   def part_b() do
     # File.stream!("puzzle_input/day03.txt", [:utf8])

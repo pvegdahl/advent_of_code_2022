@@ -35,4 +35,8 @@ defmodule Day03Test do
     assert Day03.group_by_3(~w(a b c d e f)) == [~w(a b c), ~w(d e f)]
   end
 
+  test "Find common element in a group" do
+    assert Day03.common_element(["abc", "bcd", "cde"]) == "c"
+  end
+
 end
