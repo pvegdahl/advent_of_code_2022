@@ -5,4 +5,8 @@ defmodule Day03Test do
     assert Day03.half_lines("abcdef") == {"abc", "def"}
   end
 
+  test "Find the common character in two strings" do
+    assert Day03.common_character("abcde", "efghi") == "e"
+  end
+
 end
