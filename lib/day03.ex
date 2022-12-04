@@ -31,6 +31,7 @@ defmodule Day03 do
 
   def part_a() do
     File.stream!("puzzle_input/day03.txt", [:utf8])
+    |> Stream.map(&String.trim/1)
     |> lines_to_priority_sum()
   end
 
@@ -52,9 +53,11 @@ defmodule Day03 do
 
 
   def part_b() do
-    # File.stream!("puzzle_input/day03.txt", [:utf8])
+    File.stream!("puzzle_input/day03.txt", [:utf8])
+    |> Stream.map(&String.trim/1)
+    |> group_priority_sum()
   end
 end
 
 IO.puts("Part A: #{Day03.part_a()}")
-# IO.puts("Part B: #{Day03.part_b()}")
+IO.puts("Part B: #{Day03.part_b()}")
