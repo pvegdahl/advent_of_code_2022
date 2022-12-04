@@ -31,7 +31,7 @@ defmodule Day03Test do
       "PmmdzqPrVvPwwTWBwg",
       "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
       "ttgJtRGJQctTZtZT",
-      "CrZsJsPPZsGzwwsLwLmpwMDw",
+      "CrZsJsPPZsGzwwsLwLmpwMDw"
     ]
   end
 
@@ -46,5 +46,4 @@ defmodule Day03Test do
   test "Example imput 3B" do
     assert Day03.group_priority_sum(example_input()) == 70
   end
-
 end

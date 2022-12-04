@@ -16,6 +16,7 @@ defmodule Day01 do
   def to_list_of_lists([], final_list), do: Enum.reverse(final_list)
   def to_list_of_lists(input_list, []), do: to_list_of_lists(input_list, [[]])
   def to_list_of_lists([nil | tail], list_so_far), do: to_list_of_lists(tail, [[] | list_so_far])
+
   def to_list_of_lists([input_head | input_tail], [result_head | result_tail]) do
     to_list_of_lists(input_tail, [[input_head | result_head] | result_tail])
   end

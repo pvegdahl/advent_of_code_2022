@@ -5,5 +5,4 @@ defmodule DayXXTest do
   test "Tautology" do
     assert 1 == 1
   end
-
 end

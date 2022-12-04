@@ -96,5 +96,4 @@ defmodule Day02Test do
   test "The example input B" do
     assert Day02.score_list_of_games_b(["A Y", "B X", "C Z"]) == 12
   end
-
 end
