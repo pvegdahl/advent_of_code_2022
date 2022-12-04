@@ -6,10 +6,12 @@ defmodule DayXX do
 
   def part_a() do
     # File.stream!("puzzle_input/dayXX.txt", [:utf8])
+    # |> Stream.map(&String.trim/1)
   end
 
   def part_b() do
     # File.stream!("puzzle_input/dayXX.txt", [:utf8])
+    # |> Stream.map(&String.trim/1)
   end
 end
 
