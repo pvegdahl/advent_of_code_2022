@@ -1,7 +1,4 @@
 defmodule Day03 do
-  def parse_line(_line) do
-    []
-  end
 
   def half_lines(line), do: String.split_at(line, div(String.length(line), 2))
 
@@ -26,6 +23,11 @@ defmodule Day03 do
     half_lines(line)
     |> then(fn {a, b} -> common_character(a, b) end)
     |> letter_to_priority()
+  end
+
+  def lines_to_priority_sum(lines) do
+    Enum.map(lines, &line_priority/1)
+    |> Enum.sum()
   end
 
   def part_a() do

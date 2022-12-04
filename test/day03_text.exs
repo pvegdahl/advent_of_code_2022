@@ -20,4 +20,15 @@ defmodule Day03Test do
     assert Day03.line_priority("abcdezyxwe") == 5
   end
 
+  test "Part A example input" do
+    assert Day03.lines_to_priority_sum([
+      "vJrwpWtwJgWrhcsFMMfFFhFp",
+      "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+      "PmmdzqPrVvPwwTWBwg",
+      "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
+      "ttgJtRGJQctTZtZT",
+      "CrZsJsPPZsGzwwsLwLmpwMDw",
+      ]) == 157
+  end
+
 end
