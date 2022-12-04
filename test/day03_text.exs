@@ -21,14 +21,18 @@ defmodule Day03Test do
   end
 
   test "Part A example input" do
-    assert Day03.lines_to_priority_sum([
+    assert Day03.lines_to_priority_sum(example_input()) == 157
+  end
+
+  defp example_input() do
+    [
       "vJrwpWtwJgWrhcsFMMfFFhFp",
       "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
       "PmmdzqPrVvPwwTWBwg",
       "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
       "ttgJtRGJQctTZtZT",
       "CrZsJsPPZsGzwwsLwLmpwMDw",
-      ]) == 157
+    ]
   end
 
   test "Group lines into 3-lists" do
@@ -37,6 +41,10 @@ defmodule Day03Test do
 
   test "Find common element in a group" do
     assert Day03.common_element(["abc", "bcd", "cde"]) == "c"
+  end
+
+  test "Example imput 3B" do
+    assert Day03.group_priority_sum(example_input()) == 70
   end
 
 end
