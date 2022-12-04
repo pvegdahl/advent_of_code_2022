@@ -35,6 +35,8 @@ defmodule Day03 do
     |> lines_to_priority_sum()
   end
 
+  def group_by_3(lines), do: Enum.chunk_every(lines, 3)
+
   def part_b() do
     # File.stream!("puzzle_input/day03.txt", [:utf8])
   end

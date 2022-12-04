@@ -31,4 +31,8 @@ defmodule Day03Test do
       ]) == 157
   end
 
+  test "Group lines into 3-lists" do
+    assert Day03.group_by_3(~w(a b c d e f)) == [~w(a b c), ~w(d e f)]
+  end
+
 end
