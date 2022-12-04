@@ -16,4 +16,8 @@ defmodule Day03Test do
     assert Day03.letter_to_priority("Z") == 52
   end
 
+  test "Line priority" do
+    assert Day03.line_priority("abcdezyxwe") == 5
+  end
+
 end

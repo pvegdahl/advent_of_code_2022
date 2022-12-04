@@ -24,7 +24,11 @@ defmodule Day03 do
 
   defp minus(a, b), do: a - b
 
-
+  def line_priority(line) do
+    half_lines(line)
+    |> then(fn {a, b} -> common_character(a, b) end)
+    |> letter_to_priority()
+  end
 
   def part_a() do
     # File.stream!("puzzle_input/day03.txt", [:utf8])
