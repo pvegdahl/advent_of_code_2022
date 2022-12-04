@@ -1,5 +1,5 @@
 defmodule Day03 do
-  def parse_line(line) do
+  def parse_line(_line) do
     []
   end
 
@@ -12,6 +12,17 @@ defmodule Day03 do
     |> MapSet.to_list()
     |> List.first()
   end
+
+  def letter_to_priority(letter) do
+    String.to_charlist(letter)
+    |> List.first()
+    |> minus(case_offset(letter))
+  end
+
+  defp case_offset(letter) when letter >= "a", do: 96
+  defp case_offset(_letter), do: 38
+
+  defp minus(a, b), do: a - b
 
 
 

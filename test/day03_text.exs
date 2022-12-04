@@ -9,4 +9,11 @@ defmodule Day03Test do
     assert Day03.common_character("abcde", "efghi") == "e"
   end
 
+  test "Convert letter (string) to priority" do
+    assert Day03.letter_to_priority("a") == 1
+    assert Day03.letter_to_priority("z") == 26
+    assert Day03.letter_to_priority("A") == 27
+    assert Day03.letter_to_priority("Z") == 52
+  end
+
 end
