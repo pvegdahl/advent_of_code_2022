@@ -91,4 +91,8 @@ defmodule Day05Test do
   test "part A example input passes" do
     assert Day05.part_a_impl(example_input()) == "CMZ"
   end
+
+  test "part B example input passes" do
+    assert Day05.part_b_impl(example_input()) == "MCD"
+  end
 end

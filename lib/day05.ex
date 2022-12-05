@@ -97,6 +97,8 @@ defmodule Day05 do
     |> part_a_impl()
   end
 
+  def part_b_impl(lines), do: implementation(lines, &Function.identity/1)
+
   def part_b() do
     # File.stream!("puzzle_input/day05.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
