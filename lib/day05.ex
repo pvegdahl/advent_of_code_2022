@@ -20,7 +20,7 @@ defmodule Day05 do
 
   def stack_boxes(box_matrix) do
     reversed_matrix = Enum.reverse(box_matrix)
-    size = hd(reversed_matrix) |> Enum.count()
+    size = List.first(reversed_matrix) |> Enum.count()
     stack_boxes(reversed_matrix, List.duplicate([], size))
   end
 
@@ -52,6 +52,10 @@ defmodule Day05 do
   defp calc_new_stack(stack, box, to, _from, to), do: [box | stack]
   defp calc_new_stack(stack, _box, _index, _from, _to), do: stack
 
+  defp move_many_boxes(boxes, instructions) do
+    Enum.reduce(instructions, boxes, &move_box(&2, &1))
+  end
+
   def parse_instruction(instruction) do
     captures = Regex.named_captures(~r/move (?<count>\d+) from (?<from>\d+) to (?<to>\d+)/, instruction)
     from = Map.get(captures, "from") |> String.to_integer()
@@ -73,6 +77,15 @@ defmodule Day05 do
   def top_boxes(boxes) do
     Enum.map(boxes, &List.first/1)
     |> Enum.join()
+  end
+
+  def part_a_impl(lines) do
+    {box_input, instruction_input} = split_input_lines(lines)
+
+    instructions = parse_all_instructions(instruction_input)
+    boxes = Enum.map(box_input, &parse_box_line/1) |> stack_boxes()
+
+    move_many_boxes(boxes, instructions) |> top_boxes()
   end
 
   def part_a() do

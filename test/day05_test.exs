@@ -58,4 +58,8 @@ defmodule Day05Test do
   test "get the top box letters" do
     assert Day05.top_boxes([~w(B), ~w(C D), ~w(A)]) == "BCA"
   end
+
+  test "part A example input passes" do
+    assert Day05.part_a_impl(example_input()) == "CMZ"
+  end
 end
