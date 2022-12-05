@@ -100,10 +100,11 @@ defmodule Day05 do
   def part_b_impl(lines), do: implementation(lines, &Function.identity/1)
 
   def part_b() do
-    # File.stream!("puzzle_input/day05.txt", [:utf8])
-    # |> Stream.map(&String.trim/1)
+    File.stream!("puzzle_input/day05.txt", [:utf8])
+    |> Enum.map(&String.trim(&1, "\n"))
+    |> part_b_impl()
   end
 end
 
 IO.puts("Part A: #{Day05.part_a()}")
-# IO.puts("Part B: #{Day05.part_b()}")
+IO.puts("Part B: #{Day05.part_b()}")
