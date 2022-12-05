@@ -6,23 +6,23 @@ defmodule Day04 do
     |> List.to_tuple()
   end
 
-  def one_range_is_a_subset_of_other(same, same), do: true
+  def one_range_is_a_subset_of_other?(same, same), do: true
 
-  def one_range_is_a_subset_of_other(start1..end1, start2..end2)
+  def one_range_is_a_subset_of_other?(start1..end1, start2..end2)
       when start1 <= start2 and end1 >= end2 do
     true
   end
 
-  def one_range_is_a_subset_of_other(start1..end1, start2..end2)
+  def one_range_is_a_subset_of_other?(start1..end1, start2..end2)
       when start1 >= start2 and end1 <= end2 do
     true
   end
 
-  def one_range_is_a_subset_of_other(_, _), do: false
+  def one_range_is_a_subset_of_other?(_, _), do: false
 
   def count_subsets(lines) do
     Stream.map(lines, &parse_line/1)
-    |> Stream.map(fn {range1, range2} -> one_range_is_a_subset_of_other(range1, range2) end)
+    |> Stream.map(fn {range1, range2} -> one_range_is_a_subset_of_other?(range1, range2) end)
     |> Enum.count(& &1)
   end
 
