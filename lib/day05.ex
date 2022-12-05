@@ -40,18 +40,15 @@ defmodule Day05 do
     [[box_head | stack_head] | process_one_level(box_tail, stack_tail)]
   end
 
-  def move_box(boxes, {_from, _to, 0}), do: boxes
-
-  def move_box(boxes, {from, to, count} = instruction) do
-    boxes_to_move = Enum.at(boxes, from - 1) |> Enum.take(1) |> Enum.reverse()
+  def move_box(boxes, {from, _to, count} = instruction) do
+    boxes_to_move = Enum.at(boxes, from - 1) |> Enum.take(count) |> Enum.reverse()
 
     for {stack, index} <- Enum.with_index(boxes, 1) do
       calc_new_stack(stack, boxes_to_move, index, instruction)
     end
-    |> move_box({from, to, count - 1})
   end
 
-  defp calc_new_stack(stack, _boxes, from, {from, _to, _count}), do: Enum.drop(stack, 1)
+  defp calc_new_stack(stack, _boxes, from, {from, _to, count}), do: Enum.drop(stack, count)
   defp calc_new_stack(stack, boxes, to, {_from, to, _count}), do: boxes ++ stack
   defp calc_new_stack(stack, _boxes, _index, _instruction), do: stack
 
