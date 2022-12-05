@@ -32,11 +32,18 @@ defmodule Day04 do
     |> count_subsets()
   end
 
+  def count_overlaps(lines) do
+    Stream.map(lines, &parse_line/1)
+    |> Stream.map(fn {range1, range2} -> Range.disjoint?(range1, range2) end)
+    |> Enum.count(&(not &1))
+  end
+
   def part_b() do
-    # File.stream!("puzzle_input/day04.txt", [:utf8])
-    # |> Stream.map(&String.trim/1)
+    File.stream!("puzzle_input/day04.txt", [:utf8])
+    |> Stream.map(&String.trim/1)
+    |> count_overlaps()
   end
 end
 
 IO.puts("Part A: #{Day04.part_a()}")
-# IO.puts("Part B: #{Day04.part_b()}")
+IO.puts("Part B: #{Day04.part_b()}")
