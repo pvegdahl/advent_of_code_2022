@@ -1,18 +1,20 @@
 defmodule Day04 do
   def parse_line(line) do
     String.split(line, ",")
-    |> Stream.map(&(String.split(&1, "-")))
+    |> Stream.map(&String.split(&1, "-"))
     |> Enum.map(fn [first, last] -> String.to_integer(first)..String.to_integer(last) end)
     |> List.to_tuple()
   end
 
   def one_range_is_a_subset_of_other(same, same), do: true
 
-  def one_range_is_a_subset_of_other(start1..end1, start2..end2) when start1 <= start2 and end1 >= end2 do
+  def one_range_is_a_subset_of_other(start1..end1, start2..end2)
+      when start1 <= start2 and end1 >= end2 do
     true
   end
 
-  def one_range_is_a_subset_of_other(start1..end1, start2..end2) when start1 >= start2 and end1 <= end2 do
+  def one_range_is_a_subset_of_other(start1..end1, start2..end2)
+      when start1 >= start2 and end1 <= end2 do
     true
   end
 
