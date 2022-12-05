@@ -18,6 +18,28 @@ defmodule Day05 do
   def whitespace_to_nil(" "), do: nil
   def whitespace_to_nil(x), do: x
 
+  def stack_boxes(box_matrix) do
+    reversed_matrix = Enum.reverse(box_matrix)
+    size = hd(reversed_matrix) |> Enum.count()
+    stack_boxes(reversed_matrix, List.duplicate([], size))
+  end
+
+  defp stack_boxes([], stacks_so_far), do: stacks_so_far
+
+  defp stack_boxes([head | tail], stacks_so_far) do
+    stack_boxes(tail, process_one_level(head, stacks_so_far))
+  end
+
+  defp process_one_level([], _), do: []
+
+  defp process_one_level([nil | box_tail], [stack_head | stack_tail]) do
+    [stack_head | process_one_level(box_tail, stack_tail)]
+  end
+
+  defp process_one_level([box_head | box_tail], [stack_head | stack_tail]) do
+    [[box_head | stack_head] | process_one_level(box_tail, stack_tail)]
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day05.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
