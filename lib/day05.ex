@@ -40,12 +40,14 @@ defmodule Day05 do
     [[box_head | stack_head] | process_one_level(box_tail, stack_tail)]
   end
 
-  def move_box(stacks, {from, to, _}) do
-    box_to_move = Enum.at(stacks, from-1) |> List.first()
+  def move_box(boxes, {_from, _to, 0}), do: boxes
+  def move_box(boxes, {from, to, count}) do
+    box_to_move = Enum.at(boxes, from-1) |> List.first()
 
-    for {stack, index} <- Enum.with_index(stacks, 1) do
+    for {stack, index} <- Enum.with_index(boxes, 1) do
       calc_new_stack(stack, box_to_move, index, from, to)
     end
+    |> move_box({from, to, count-1})
   end
 
   defp calc_new_stack([_head | tail], _box, from, from, _to), do: tail
