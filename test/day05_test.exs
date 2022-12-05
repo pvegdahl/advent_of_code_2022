@@ -18,4 +18,9 @@ defmodule Day05Test do
              ~w(C F)
            ]
   end
+
+  test "Move a box from one stack to another" do
+    assert Day05.move_box([~w(A B), ~w(C D)], {1, 2}) == [~w(B), ~w(A C D)]
+    assert Day05.move_box([~w(A B), ~w(C D), []], {1, 3}) == [~w(B), ~w(C D), ~w(A)]
+  end
 end

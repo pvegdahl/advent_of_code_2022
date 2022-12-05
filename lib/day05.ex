@@ -40,6 +40,18 @@ defmodule Day05 do
     [[box_head | stack_head] | process_one_level(box_tail, stack_tail)]
   end
 
+  def move_box(stacks, {from, to}) do
+    box_to_move = Enum.at(stacks, from-1) |> List.first()
+
+    for {stack, index} <- Enum.with_index(stacks, 1) do
+      calc_new_stack(stack, box_to_move, index, from, to)
+    end
+  end
+
+  defp calc_new_stack([_head | tail], _box, from, from, _to), do: tail
+  defp calc_new_stack(stack, box, to, _from, to), do: [box | stack]
+  defp calc_new_stack(stack, _box, _index, _from, _to), do: stack
+
   def part_a() do
     # File.stream!("puzzle_input/day05.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
