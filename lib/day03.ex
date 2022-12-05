@@ -58,5 +58,5 @@ defmodule Day03 do
   end
 end
 
-# IO.puts("Part A: #{Day03.part_a()}")
-# IO.puts("Part B: #{Day03.part_b()}")
+IO.puts("Part A: #{Day03.part_a()}")
+IO.puts("Part B: #{Day03.part_b()}")
