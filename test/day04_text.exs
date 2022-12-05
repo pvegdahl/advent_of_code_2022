@@ -25,4 +25,12 @@ defmodule Day04Test do
     assert Day04.one_range_is_a_subset_of_other(1..3, 1..4)
     assert Day04.one_range_is_a_subset_of_other(2..4, 1..4)
   end
+
+  test "Part A example input passes" do
+    assert Day04.count_subsets(example_input()) == 2
+  end
+
+  defp example_input() do
+    ["2-4,6-8", "2-3,4-5", "5-7,7-9", "2-8,3-7", "6-6,4-6", "2-6,4-8"]
+  end
 end
