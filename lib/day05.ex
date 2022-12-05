@@ -52,8 +52,8 @@ defmodule Day05 do
   defp calc_new_stack(stack, boxes, to, {_from, to, _count}), do: boxes ++ stack
   defp calc_new_stack(stack, _boxes, _index, _instruction), do: stack
 
-  defp move_many_boxes(boxes, instructions) do
-    Enum.reduce(instructions, boxes, &move_box(&2, &1))
+  defp move_many_boxes(boxes, instructions, order_func \\ &Enum.reverse/1) do
+    Enum.reduce(instructions, boxes, &move_box(&2, &1, order_func))
   end
 
   def parse_instruction(instruction) do
@@ -80,14 +80,16 @@ defmodule Day05 do
     |> Enum.join()
   end
 
-  def part_a_impl(lines) do
+  def implementation(lines, order_func) do
     {box_input, instruction_input} = split_input_lines(lines)
 
     instructions = parse_all_instructions(instruction_input)
     boxes = Enum.map(box_input, &parse_box_line/1) |> stack_boxes()
 
-    move_many_boxes(boxes, instructions) |> top_boxes()
+    move_many_boxes(boxes, instructions, order_func) |> top_boxes()
   end
+
+  def part_a_impl(lines), do: implementation(lines, &Enum.reverse/1)
 
   def part_a() do
     File.stream!("puzzle_input/day05.txt", [:utf8])
