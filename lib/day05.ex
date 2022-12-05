@@ -53,11 +53,12 @@ defmodule Day05 do
   defp calc_new_stack(stack, _box, _index, _from, _to), do: stack
 
   def parse_instruction(instruction) do
-    captures = Regex.named_captures(~r/move 1 from (?<from>\d+) to (?<to>\d+)/, instruction)
-    [
-      {Map.get(captures, "from") |> String.to_integer(),
-       Map.get(captures, "to") |> String.to_integer()}
-     ]
+    captures = Regex.named_captures(~r/move (?<count>\d+) from (?<from>\d+) to (?<to>\d+)/, instruction)
+    from = Map.get(captures, "from") |> String.to_integer()
+    to = Map.get(captures, "to") |> String.to_integer()
+    count = Map.get(captures, "count") |> String.to_integer()
+
+    List.duplicate({from, to}, count)
   end
 
   def part_a() do
