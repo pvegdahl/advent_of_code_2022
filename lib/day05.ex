@@ -89,8 +89,9 @@ defmodule Day05 do
   end
 
   def part_a() do
-    # File.stream!("puzzle_input/day05.txt", [:utf8])
-    # |> Stream.map(&String.trim/1)
+    File.stream!("puzzle_input/day05.txt", [:utf8])
+    |> Enum.map(&String.trim(&1, "\n"))
+    |> part_a_impl()
   end
 
   def part_b() do
@@ -99,5 +100,5 @@ defmodule Day05 do
   end
 end
 
-# IO.puts("Part A: #{Day05.part_a()}")
+IO.puts("Part A: #{Day05.part_a()}")
 # IO.puts("Part B: #{Day05.part_b()}")

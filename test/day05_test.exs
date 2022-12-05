@@ -9,6 +9,8 @@ defmodule Day05Test do
     assert Day05.parse_box_line("[A] [B]    ") == ["A", "B", nil]
     assert Day05.parse_box_line("    [B] [C]") == [nil, "B", "C"]
     assert Day05.parse_box_line("[A]     [C]") == ["A", nil, "C"]
+    assert Day05.parse_box_line("[V]         [T]         [J]        ") == ["V", nil, nil, "T", nil, nil, "J", nil, nil]
+    assert Day05.parse_box_line("[C] [H] [F] [Z] [G] [L] [V] [Z] [H]") == ~w(C H F Z G L V Z H)
   end
 
   test "Turn a matrix of boxes into stacks of boxes" do
