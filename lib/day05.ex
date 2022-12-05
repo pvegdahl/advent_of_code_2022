@@ -70,6 +70,11 @@ defmodule Day05 do
     }
   end
 
+  def top_boxes(boxes) do
+    Enum.map(boxes, &List.first/1)
+    |> Enum.join()
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day05.txt", [:utf8])
     # |> Stream.map(&String.trim/1)

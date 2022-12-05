@@ -54,4 +54,8 @@ defmodule Day05Test do
       "move 1 from 1 to 2",
     ]
   end
+
+  test "get the top box letters" do
+    assert Day05.top_boxes([~w(B), ~w(C D), ~w(A)]) == "BCA"
+  end
 end
