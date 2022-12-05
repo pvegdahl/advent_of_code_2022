@@ -40,7 +40,7 @@ defmodule Day05 do
     [[box_head | stack_head] | process_one_level(box_tail, stack_tail)]
   end
 
-  def move_box(stacks, {from, to}) do
+  def move_box(stacks, {from, to, _}) do
     box_to_move = Enum.at(stacks, from-1) |> List.first()
 
     for {stack, index} <- Enum.with_index(stacks, 1) do
@@ -62,7 +62,7 @@ defmodule Day05 do
     to = Map.get(captures, "to") |> String.to_integer()
     count = Map.get(captures, "count") |> String.to_integer()
 
-    List.duplicate({from, to}, count)
+    List.duplicate({from, to, 1}, count)
   end
 
   def parse_all_instructions(instructions), do: Enum.flat_map(instructions, &parse_instruction/1)
