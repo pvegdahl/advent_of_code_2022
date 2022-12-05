@@ -52,6 +52,14 @@ defmodule Day05 do
   defp calc_new_stack(stack, box, to, _from, to), do: [box | stack]
   defp calc_new_stack(stack, _box, _index, _from, _to), do: stack
 
+  def parse_instruction(instruction) do
+    captures = Regex.named_captures(~r/move 1 from (?<from>\d+) to (?<to>\d+)/, instruction)
+    [
+      {Map.get(captures, "from") |> String.to_integer(),
+       Map.get(captures, "to") |> String.to_integer()}
+     ]
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day05.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
