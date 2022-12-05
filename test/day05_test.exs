@@ -31,16 +31,16 @@ defmodule Day05Test do
   end
 
   test "parse instruction to tuple list" do
-    assert Day05.parse_instruction("move 1 from 2 to 1") == [{2, 1, 1}]
+    assert Day05.parse_instruction("move 1 from 2 to 1") == {2, 1, 1}
   end
 
   test "parse instruction with muliples to tuple list" do
-    assert Day05.parse_instruction("move 3 from 8 to 6") == [{8, 6, 1}, {8, 6, 1}, {8, 6, 1}]
+    assert Day05.parse_instruction("move 3 from 8 to 6") == {8, 6, 3}
   end
 
   test "parse a list of instructions to a list of tuples" do
     assert Day05.parse_all_instructions(["move 1 from 1 to 2", "move 2 from 3 to 4", "move 3 from 5 to 6"])
-     == [{1, 2, 1}, {3, 4, 1}, {3, 4, 1}, {5, 6, 1}, {5, 6, 1}, {5, 6, 1}]
+     == [{1, 2, 1}, {3, 4, 2}, {5, 6, 3}]
   end
 
   test "split the input into boxes and instructions" do

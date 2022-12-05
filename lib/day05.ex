@@ -63,11 +63,10 @@ defmodule Day05 do
     from = Map.get(captures, "from") |> String.to_integer()
     to = Map.get(captures, "to") |> String.to_integer()
     count = Map.get(captures, "count") |> String.to_integer()
-
-    List.duplicate({from, to, 1}, count)
+    {from, to, count}
   end
 
-  def parse_all_instructions(instructions), do: Enum.flat_map(instructions, &parse_instruction/1)
+  def parse_all_instructions(instructions), do: Enum.map(instructions, &parse_instruction/1)
 
   def split_input_lines(lines) do
     {
