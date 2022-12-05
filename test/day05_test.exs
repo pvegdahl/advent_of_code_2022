@@ -9,7 +9,19 @@ defmodule Day05Test do
     assert Day05.parse_box_line("[A] [B]    ") == ["A", "B", nil]
     assert Day05.parse_box_line("    [B] [C]") == [nil, "B", "C"]
     assert Day05.parse_box_line("[A]     [C]") == ["A", nil, "C"]
-    assert Day05.parse_box_line("[V]         [T]         [J]        ") == ["V", nil, nil, "T", nil, nil, "J", nil, nil]
+
+    assert Day05.parse_box_line("[V]         [T]         [J]        ") == [
+             "V",
+             nil,
+             nil,
+             "T",
+             nil,
+             nil,
+             "J",
+             nil,
+             nil
+           ]
+
     assert Day05.parse_box_line("[C] [H] [F] [Z] [G] [L] [V] [Z] [H]") == ~w(C H F Z G L V Z H)
   end
 
@@ -39,12 +51,17 @@ defmodule Day05Test do
   end
 
   test "parse a list of instructions to a list of tuples" do
-    assert Day05.parse_all_instructions(["move 1 from 1 to 2", "move 2 from 3 to 4", "move 3 from 5 to 6"])
-     == [{1, 2, 1}, {3, 4, 2}, {5, 6, 3}]
+    assert Day05.parse_all_instructions([
+             "move 1 from 1 to 2",
+             "move 2 from 3 to 4",
+             "move 3 from 5 to 6"
+           ]) ==
+             [{1, 2, 1}, {3, 4, 2}, {5, 6, 3}]
   end
 
   test "split the input into boxes and instructions" do
-    assert Day05.split_input_lines(example_input()) == {Enum.slice(example_input(), 0..2), Enum.slice(example_input(), 5..8)}
+    assert Day05.split_input_lines(example_input()) ==
+             {Enum.slice(example_input(), 0..2), Enum.slice(example_input(), 5..8)}
   end
 
   defp example_input() do
@@ -57,7 +74,7 @@ defmodule Day05Test do
       "move 1 from 2 to 1",
       "move 3 from 1 to 3",
       "move 2 from 2 to 1",
-      "move 1 from 1 to 2",
+      "move 1 from 1 to 2"
     ]
   end
 

@@ -41,13 +41,14 @@ defmodule Day05 do
   end
 
   def move_box(boxes, {_from, _to, 0}), do: boxes
+
   def move_box(boxes, {from, to, count}) do
-    box_to_move = Enum.at(boxes, from-1) |> List.first()
+    box_to_move = Enum.at(boxes, from - 1) |> List.first()
 
     for {stack, index} <- Enum.with_index(boxes, 1) do
       calc_new_stack(stack, box_to_move, index, from, to)
     end
-    |> move_box({from, to, count-1})
+    |> move_box({from, to, count - 1})
   end
 
   defp calc_new_stack([_head | tail], _box, from, from, _to), do: tail
@@ -59,7 +60,9 @@ defmodule Day05 do
   end
 
   def parse_instruction(instruction) do
-    captures = Regex.named_captures(~r/move (?<count>\d+) from (?<from>\d+) to (?<to>\d+)/, instruction)
+    captures =
+      Regex.named_captures(~r/move (?<count>\d+) from (?<from>\d+) to (?<to>\d+)/, instruction)
+
     from = Map.get(captures, "from") |> String.to_integer()
     to = Map.get(captures, "to") |> String.to_integer()
     count = Map.get(captures, "count") |> String.to_integer()
@@ -70,8 +73,8 @@ defmodule Day05 do
 
   def split_input_lines(lines) do
     {
-      Enum.filter(lines, &(String.contains?(&1, "["))),
-      Enum.filter(lines, &(String.starts_with?(&1, "move"))),
+      Enum.filter(lines, &String.contains?(&1, "[")),
+      Enum.filter(lines, &String.starts_with?(&1, "move"))
     }
   end
 
