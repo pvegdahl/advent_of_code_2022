@@ -42,11 +42,11 @@ defmodule Day05Test do
     assert Day05.move_box([~w(A B C), ~w(D E F)], {1, 2, 2}) == [~w(C), ~w(B A D E F)]
   end
 
-  # test "Move boxes (part B)" do
-  #   assert Day05.move_multiple_boxes([~w(A B), ~w(C D)], {1, 2, 1}) == [~w(B), ~w(A C D)]
-  #   assert Day05.move_multiple_boxes([~w(A B), ~w(C D), []], {1, 3, 1}) == [~w(B), ~w(C D), ~w(A)]
-  #   assert Day05.move_multiple_boxes([~w(A B C), ~w(D E F)], {1, 2, 2}) == [~w(C), ~w(A B D E F)]
-  # end
+  test "Move boxes (part B)" do
+    assert Day05.move_box([~w(A B), ~w(C D)], {1, 2, 1}, &Function.identity/1) == [~w(B), ~w(A C D)]
+    assert Day05.move_box([~w(A B), ~w(C D), []], {1, 3, 1}, &Function.identity/1) == [~w(B), ~w(C D), ~w(A)]
+    assert Day05.move_box([~w(A B C), ~w(D E F)], {1, 2, 2}, &Function.identity/1) == [~w(C), ~w(A B D E F)]
+  end
 
   test "parse instruction to tuple list" do
     assert Day05.parse_instruction("move 1 from 2 to 1") == {2, 1, 1}
