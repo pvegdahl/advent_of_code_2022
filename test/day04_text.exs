@@ -13,4 +13,16 @@ defmodule Day04Test do
   test "subset is false for non unified ranges" do
     assert not Day04.one_range_is_a_subset_of_other(1..4, 3..7)
   end
+
+  test "subset is true for second range smaller" do
+    assert Day04.one_range_is_a_subset_of_other(1..4, 2..3)
+    assert Day04.one_range_is_a_subset_of_other(1..4, 1..3)
+    assert Day04.one_range_is_a_subset_of_other(1..4, 2..4)
+  end
+
+  test "subset is true for first range smaller" do
+    assert Day04.one_range_is_a_subset_of_other(2..3, 1..4)
+    assert Day04.one_range_is_a_subset_of_other(1..3, 1..4)
+    assert Day04.one_range_is_a_subset_of_other(2..4, 1..4)
+  end
 end

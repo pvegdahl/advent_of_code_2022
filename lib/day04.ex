@@ -7,6 +7,15 @@ defmodule Day04 do
   end
 
   def one_range_is_a_subset_of_other(same, same), do: true
+
+  def one_range_is_a_subset_of_other(start1..end1, start2..end2) when start1 <= start2 and end1 >= end2 do
+    true
+  end
+
+  def one_range_is_a_subset_of_other(start1..end1, start2..end2) when start1 >= start2 and end1 <= end2 do
+    true
+  end
+
   def one_range_is_a_subset_of_other(_, _), do: false
 
   def part_a() do
