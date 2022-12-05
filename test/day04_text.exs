@@ -9,4 +9,8 @@ defmodule Day04Test do
   test "subset is true for equal ranges" do
     assert Day04.one_range_is_a_subset_of_other(1..4, 1..4)
   end
+
+  test "subset is false for non unified ranges" do
+    assert not Day04.one_range_is_a_subset_of_other(1..4, 3..7)
+  end
 end

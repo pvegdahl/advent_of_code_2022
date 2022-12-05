@@ -7,7 +7,8 @@ defmodule Day04 do
   end
 
   def one_range_is_a_subset_of_other(same, same), do: true
-  
+  def one_range_is_a_subset_of_other(_, _), do: false
+
   def part_a() do
     # File.stream!("puzzle_input/day04.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
