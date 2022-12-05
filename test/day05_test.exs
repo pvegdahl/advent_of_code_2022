@@ -31,4 +31,9 @@ defmodule Day05Test do
   test "parse instruction with muliples to tuple list" do
     assert Day05.parse_instruction("move 3 from 8 to 6") == [{8, 6}, {8, 6}, {8, 6}]
   end
+
+  test "parse a list of instructions to a list of tuples" do
+    assert Day05.parse_all_instructions(["move 1 from 1 to 2", "move 2 from 3 to 4", "move 3 from 5 to 6"])
+     == [{1, 2}, {3, 4}, {3, 4}, {5, 6}, {5, 6}, {5, 6}]
+  end
 end

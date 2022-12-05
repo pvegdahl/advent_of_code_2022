@@ -61,6 +61,8 @@ defmodule Day05 do
     List.duplicate({from, to}, count)
   end
 
+  def parse_all_instructions(instructions), do: Enum.flat_map(instructions, &parse_instruction/1)
+
   def part_a() do
     # File.stream!("puzzle_input/day05.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
