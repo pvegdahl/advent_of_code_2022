@@ -43,7 +43,7 @@ defmodule Day05 do
   def move_box(boxes, {_from, _to, 0}), do: boxes
 
   def move_box(boxes, {from, to, count}) do
-    boxes_to_move = Enum.at(boxes, from - 1) |> Enum.take(1)
+    boxes_to_move = Enum.at(boxes, from - 1) |> Enum.take(1) |> Enum.reverse()
 
     for {stack, index} <- Enum.with_index(boxes, 1) do
       calc_new_stack(stack, boxes_to_move, index, from, to)
@@ -51,7 +51,7 @@ defmodule Day05 do
     |> move_box({from, to, count - 1})
   end
 
-  defp calc_new_stack([_head | tail], _boxes, from, from, _to), do: tail
+  defp calc_new_stack(stack, _boxes, from, from, _to), do: Enum.drop(stack, 1)
   defp calc_new_stack(stack, boxes, to, _from, to), do: boxes ++ stack
   defp calc_new_stack(stack, _boxes, _index, _from, _to), do: stack
 
