@@ -27,8 +27,9 @@ defmodule Day04 do
   end
 
   def part_a() do
-    # File.stream!("puzzle_input/day04.txt", [:utf8])
-    # |> Stream.map(&String.trim/1)
+    File.stream!("puzzle_input/day04.txt", [:utf8])
+    |> Stream.map(&String.trim/1)
+    |> count_subsets()
   end
 
   def part_b() do
@@ -37,5 +38,5 @@ defmodule Day04 do
   end
 end
 
-# IO.puts("Part A: #{Day04.part_a()}")
+IO.puts("Part A: #{Day04.part_a()}")
 # IO.puts("Part B: #{Day04.part_b()}")
