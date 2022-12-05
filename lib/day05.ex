@@ -63,6 +63,13 @@ defmodule Day05 do
 
   def parse_all_instructions(instructions), do: Enum.flat_map(instructions, &parse_instruction/1)
 
+  def split_input_lines(lines) do
+    {
+      Enum.filter(lines, &(String.contains?(&1, "["))),
+      Enum.filter(lines, &(String.starts_with?(&1, "move"))),
+    }
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day05.txt", [:utf8])
     # |> Stream.map(&String.trim/1)

@@ -36,4 +36,22 @@ defmodule Day05Test do
     assert Day05.parse_all_instructions(["move 1 from 1 to 2", "move 2 from 3 to 4", "move 3 from 5 to 6"])
      == [{1, 2}, {3, 4}, {3, 4}, {5, 6}, {5, 6}, {5, 6}]
   end
+
+  test "split the input into boxes and instructions" do
+    assert Day05.split_input_lines(example_input()) == {Enum.slice(example_input(), 0..2), Enum.slice(example_input(), 5..8)}
+  end
+
+  defp example_input() do
+    [
+      "    [D]    ",
+      "[N] [C]    ",
+      "[Z] [M] [P]",
+      " 1   2   3 ",
+      "",
+      "move 1 from 2 to 1",
+      "move 3 from 1 to 3",
+      "move 2 from 2 to 1",
+      "move 1 from 1 to 2",
+    ]
+  end
 end
