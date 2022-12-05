@@ -1,6 +1,11 @@
 defmodule Day05 do
-  def parse_line(line) do
+  def parse_line(_line) do
     []
+  end
+
+  def parse_box_line(line) do
+    String.split(line, " ")
+    |> Enum.map(&(String.at(&1, 1)))
   end
 
   def part_a() do
