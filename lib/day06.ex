@@ -11,12 +11,13 @@ defmodule Day06 do
     distinct_chars = Enum.take(packet, 4)
     |> Enum.uniq()
     |> Enum.count()
+    |> check_packet_begin(tail, position)
+  end
 
-    if distinct_chars < 4 do
-      packet_begin_position(tail, position+1)
-    else
-      position
-    end
+  defp check_packet_begin(4, _packet_tail, position), do: position
+
+  defp check_packet_begin(_distinct_chars, packet_tail, position) do
+    packet_begin_position(packet_tail, position+1)
   end
 
   def part_a() do
