@@ -4,7 +4,19 @@ defmodule Day06 do
   end
 
   def packet_begin_position(packet) do
-    4
+    packet_begin_position(String.to_charlist(packet), 4)
+  end
+
+  defp packet_begin_position([_head | tail] = packet, position) do
+    distinct_chars = Enum.take(packet, 4)
+    |> Enum.uniq()
+    |> Enum.count()
+
+    if distinct_chars < 4 do
+      packet_begin_position(tail, position+1)
+    else
+      position
+    end
   end
 
   def part_a() do
