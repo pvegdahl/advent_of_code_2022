@@ -14,4 +14,12 @@ defmodule Day06Test do
     assert Day06.packet_begin_position("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg") == 10
     assert Day06.packet_begin_position("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw") == 11
   end
+
+  test "Part B examples" do
+    assert Day06.packet_begin_position("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 14) == 19
+    assert Day06.packet_begin_position("bvwbjplbgvbhsrlpgdmjqwftvncz", 14) == 23
+    assert Day06.packet_begin_position("nppdvjthqldpwncqszvftbrmjlhg", 14) == 23
+    assert Day06.packet_begin_position("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 14) == 29
+    assert Day06.packet_begin_position("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 14) == 26
+  end
 end
