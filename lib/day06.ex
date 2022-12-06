@@ -21,8 +21,10 @@ defmodule Day06 do
   end
 
   def part_a() do
-    # File.stream!("puzzle_input/day06.txt", [:utf8])
-    # |> Stream.map(&String.trim/1)
+    File.stream!("puzzle_input/day06.txt", [:utf8])
+    |> Enum.map(&String.trim/1)
+    |> List.first()
+    |> packet_begin_position()
   end
 
   def part_b() do
