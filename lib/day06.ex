@@ -3,6 +3,10 @@ defmodule Day06 do
     []
   end
 
+  def packet_begin_position(packet) do
+    4
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day06.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
