@@ -1,8 +1,4 @@
 defmodule Day06 do
-  def parse_line(line) do
-    []
-  end
-
   def packet_begin_position(packet, unique_chars \\ 4) do
     packet_begin_position(String.to_charlist(packet), unique_chars, unique_chars)
   end
