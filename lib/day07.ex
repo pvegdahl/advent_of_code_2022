@@ -1,6 +1,7 @@
 defmodule Day07 do
   def parse_line(line) do
-    {:dir, String.at(line, 2)}
+    dir_name = String.trim_leading(line) |> String.at(2)
+    {:dir, dir_name}
   end
 
   def part_a() do
@@ -14,5 +15,5 @@ defmodule Day07 do
   end
 end
 
-# IO.puts("Part A: #{Day07.part_a()}")
-# IO.puts("Part B: #{Day07.part_b()}")
+IO.puts("Part A: #{Day07.part_a()}")
+IO.puts("Part B: #{Day07.part_b()}")
