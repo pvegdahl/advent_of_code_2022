@@ -1,7 +1,7 @@
-defmodule Day07XTest do
+defmodule Day07Test do
   use ExUnit.Case
 
-  test "Tautology" do
-    assert 1 == 1
+  test "Parse a dir from a line" do
+    assert Day07.parse_line("- q (dir)") == {:dir, "q"}
   end
 end

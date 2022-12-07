@@ -1,6 +1,6 @@
 defmodule Day07 do
   def parse_line(line) do
-    []
+    {:dir, String.at(line, 2)}
   end
 
   def part_a() do
