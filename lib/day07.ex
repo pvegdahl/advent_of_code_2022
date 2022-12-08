@@ -103,8 +103,13 @@ defmodule Day07 do
     |> Enum.sort()
     |> Enum.drop_while(&(&1 < required_size))
     |> List.first()
-
   end
+
+  def part_b_impl(lines) do
+    input_to_filesystem_tree(lines)
+    |> smallest_dir_to_delete()
+  end
+
 
   def part_b() do
     # File.stream!("puzzle_input/day07.txt", [:utf8])

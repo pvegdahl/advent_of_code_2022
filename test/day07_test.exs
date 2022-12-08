@@ -119,6 +119,10 @@ defmodule Day07Test do
     assert Day07.smallest_dir_to_delete(example_filesystem_tree()) == 24933642
   end
 
+  test "Part B example input" do
+    assert Day07.part_b_impl(example_input()) == 24933642
+  end
+
   defp example_input() do
     [
       "$ cd /",
