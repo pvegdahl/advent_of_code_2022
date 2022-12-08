@@ -44,6 +44,12 @@ defmodule Day07 do
     build_filesystem_tree(instruction_tail, path, new_tree)
   end
 
+  def path_size(filesystem_tree, path) do
+    Map.get(filesystem_tree, path)
+    |> List.first()
+    |> elem(2)
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day07.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
