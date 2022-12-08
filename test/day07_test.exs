@@ -29,6 +29,11 @@ defmodule Day07Test do
     assert Day07.group_instructions_with_results([:ls, {:file, "one.txt", 24601}, :ls, {:dir, "two"}]) == [ls: [{:file, "one.txt", 24601}], ls: [{:dir, "two"}]]
   end
 
+  test "group a list with cd and ls instructions" do
+    assert Day07.group_instructions_with_results([{:cd, "a"}, :ls, {:file, "one.txt", 24601}, {:cd, "b"}, :ls, {:dir, "two"}]) ==
+       [cd: "a", ls: [{:file, "one.txt", 24601}], cd: "b", ls: [{:dir, "two"}]]
+  end
+
   def example_input() do
     [
       "$ cd /",

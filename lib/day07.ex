@@ -13,8 +13,8 @@ defmodule Day07 do
     [{:ls, Enum.take_while(tail, &ls_result?/1)} | group_instructions_with_results(Enum.drop_while(tail, &ls_result?/1))]
   end
 
-  def group_instructions_with_results(parsed_lines) do
-    parsed_lines
+  def group_instructions_with_results([{:cd, _dir_name} = cd_instruction | tail]) do
+    [cd_instruction | group_instructions_with_results(tail)]
   end
 
   def ls_result?({:file, _, _}), do: true
