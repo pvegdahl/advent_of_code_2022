@@ -112,8 +112,9 @@ defmodule Day07 do
 
 
   def part_b() do
-    # File.stream!("puzzle_input/day07.txt", [:utf8])
-    # |> Stream.map(&String.trim/1)
+    File.stream!("puzzle_input/day07.txt", [:utf8])
+    |> Stream.map(&String.trim/1)
+    |> part_b_impl()
   end
 end
 
