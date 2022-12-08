@@ -46,8 +46,8 @@ defmodule Day07 do
 
   def path_size(filesystem_tree, path) do
     Map.get(filesystem_tree, path)
-    |> List.first()
-    |> elem(2)
+    |> Enum.map(&elem(&1, 2))
+    |> Enum.sum()
   end
 
   def part_a() do

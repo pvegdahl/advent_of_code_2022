@@ -75,11 +75,11 @@ defmodule Day07Test do
   end
 
   test "get total sizes of a path" do
-    filesystem_tree = %{["/"] => [{:dir, "roger"}, {:dir, "lawrence"}], ["roger", "/"] => [{:file, "roger.txt", 4}], ["lawrence", "/"] => [{:file, "lawrence.txt", 2}]}
+    filesystem_tree = %{["/"] => [{:dir, "roger"}, {:dir, "lawrence"}], ["roger", "/"] => [{:file, "roger.txt", 4}], ["lawrence", "/"] => [{:file, "lawrence.txt", 2}, {:file, "emmanual", 1}]}
 
     assert Day07.path_size(filesystem_tree, ["roger", "/"]) == 4
-    assert Day07.path_size(filesystem_tree, ["lawrence", "/"]) == 2
-    # assert Day07.path_size(filesystem_tree, ["/"]) == 2
+    assert Day07.path_size(filesystem_tree, ["lawrence", "/"]) == 3
+    # assert Day07.path_size(filesystem_tree, ["/"]) == 7
 
     # assert Day07.total_size_by_dir(%{["/"] => [{:dir, "roger"}, {:dir, "lawrence"}], ["roger", "/"] => [{:file, "roger.txt", 4}], ["lawrence", "/"] => [{:file, "lawrence.txt", 2}]}) ==
     #   %{["/"] => 6, ["roger", "/"] => 4, ["lawrence", "/"] => 2}
