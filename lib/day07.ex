@@ -31,12 +31,12 @@ defmodule Day07 do
 
   defp build_filesystem_tree([], _current_pos, complete_tree), do: complete_tree
 
-  defp build_filesystem_tree([{:cd, dir} | instruction_tail], current_pos, tree_so_far) do
-    build_filesystem_tree(instruction_tail, [dir | current_pos], tree_so_far)
+  defp build_filesystem_tree([{:cd, dir} | instruction_tail], path, tree_so_far) do
+    build_filesystem_tree(instruction_tail, [dir | path], tree_so_far)
   end
 
-  defp build_filesystem_tree([{:ls, contents} | instruction_tail], [current_dir | _pos_tail] = path, tree_so_far) do
-    new_tree = Map.put(tree_so_far, current_dir, contents)
+  defp build_filesystem_tree([{:ls, contents} | instruction_tail], path, tree_so_far) do
+    new_tree = Map.put(tree_so_far, path, contents)
     build_filesystem_tree(instruction_tail, path, new_tree)
   end
 

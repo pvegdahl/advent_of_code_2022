@@ -58,7 +58,7 @@ defmodule Day07Test do
              cd: "some_dir",
              ls: [{:file, "two.txt", 321}]
            ) ==
-             %{"/" => [{:file, "one.txt", 24601}, {:dir, "some_dir"}], "some_dir" => [{:file, "two.txt", 321}]}
+             %{["/"] => [{:file, "one.txt", 24601}, {:dir, "some_dir"}], ["some_dir", "/"] => [{:file, "two.txt", 321}]}
   end
 
   test "Use cd .. correctly when building the tree" do
@@ -71,7 +71,7 @@ defmodule Day07Test do
              cd: "lawrence",
              ls: [{:file, "lawrence.txt", 20200515}],
            ) ==
-             %{"/" => [{:dir, "roger"}, {:dir, "lawrence"}], "roger" => [{:file, "roger.txt", 20180109}], "lawrence" => [{:file, "lawrence.txt", 20200515}]}
+             %{["/"] => [{:dir, "roger"}, {:dir, "lawrence"}], ["roger", "/"] => [{:file, "roger.txt", 20180109}], ["lawrence", "/"] => [{:file, "lawrence.txt", 20200515}]}
   end
 
   def example_input() do
