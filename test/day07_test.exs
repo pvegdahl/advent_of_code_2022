@@ -7,7 +7,7 @@ defmodule Day07Test do
   end
 
   test "Parse an ls instruction" do
-    assert Day07.parse_line("$ ls") == {:ls}
+    assert Day07.parse_line("$ ls") == :ls
   end
 
   test "Parse a file result" do
@@ -24,7 +24,7 @@ defmodule Day07Test do
   end
 
   test "group ls instructions grouped with results" do
-    assert Day07.group_instructions_with_results([{:ls}, {:file, "thing.txt", 24601}]) == [ls: [{:file, "thing.txt", 24601}]]
+    assert Day07.group_instructions_with_results([:ls, {:file, "thing.txt", 24601}]) == [ls: [{:file, "thing.txt", 24601}]]
   end
 
   def example_input() do

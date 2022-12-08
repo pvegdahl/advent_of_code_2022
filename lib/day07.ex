@@ -2,13 +2,13 @@ defmodule Day07 do
   def parse_line(line) do
     case String.split(line, " ") do
       ["$", "cd", dir_name] -> {:cd, dir_name}
-      ["$", "ls"] -> {:ls}
+      ["$", "ls"] -> :ls
       ["dir", dir_name] -> {:dir, dir_name}
       [file_size, file_name] -> {:file, file_name, String.to_integer(file_size)}
     end
   end
 
-  def group_instructions_with_results([{:ls} | tail]) do
+  def group_instructions_with_results([:ls | tail]) do
     [ls: tail]
   end
   def group_instructions_with_results(parsed_lines) do
