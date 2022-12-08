@@ -48,6 +48,12 @@ defmodule Day07 do
     build_filesystem_tree(instruction_tail, path, new_tree)
   end
 
+  def input_to_filesystem_tree(lines) do
+    Enum.map(lines, &parse_line/1)
+    |> group_instructions_with_results()
+    |> build_filesystem_tree()
+  end
+
   def path_size(filesystem_tree, path) do
     Map.get(filesystem_tree, path)
     |> Enum.map(&file_or_dir_size(&1, filesystem_tree, path))
@@ -75,9 +81,7 @@ defmodule Day07 do
   end
 
   def part_a_impl(lines) do
-    Enum.map(lines, &parse_line/1)
-    |> group_instructions_with_results()
-    |> build_filesystem_tree()
+    input_to_filesystem_tree(lines)
     |> sum_all_dirs_at_most_size_x(100_000)
   end
 
@@ -85,6 +89,21 @@ defmodule Day07 do
     File.stream!("puzzle_input/day07.txt", [:utf8])
     |> Stream.map(&String.trim/1)
     |> part_a_impl()
+  end
+
+  def get_required_space(filesystem_tree) do
+    path_size(filesystem_tree, ["/"]) - 40_000_000
+  end
+
+  def smallest_dir_to_delete(filesystem_tree) do
+    required_size = get_required_space(filesystem_tree)
+    all_path_sizes(filesystem_tree)
+    |> Map.to_list()
+    |> Enum.map(&elem(&1, 1))
+    |> Enum.sort()
+    |> Enum.drop_while(&(&1 < required_size))
+    |> List.first()
+
   end
 
   def part_b() do

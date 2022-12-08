@@ -111,6 +111,14 @@ defmodule Day07Test do
     assert Day07.part_a_impl(example_input()) == 95437
   end
 
+  test "get required space" do
+    assert Day07.get_required_space(example_filesystem_tree()) == 8381165
+  end
+
+  test "get smallest dir size to delete" do
+    assert Day07.smallest_dir_to_delete(example_filesystem_tree()) == 24933642
+  end
+
   defp example_input() do
     [
       "$ cd /",
@@ -137,5 +145,9 @@ defmodule Day07Test do
       "5626152 d.ext",
       "7214296 k"
     ]
+  end
+
+  defp example_filesystem_tree() do
+    example_input() |> Day07.input_to_filesystem_tree()
   end
 end
