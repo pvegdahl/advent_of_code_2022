@@ -21,9 +21,9 @@ defmodule Day07 do
     [cd_instruction | group_instructions_with_results(tail)]
   end
 
-  def ls_result?({:file, _, _}), do: true
-  def ls_result?({:dir, _}), do: true
-  def ls_result?(_), do: false
+  defp ls_result?({:file, _, _}), do: true
+  defp ls_result?({:dir, _}), do: true
+  defp ls_result?(_), do: false
 
   def build_filesystem_tree([{:cd, "/"} | tail]) do
     build_filesystem_tree(tail, ["/"], %{})
@@ -66,6 +66,13 @@ defmodule Day07 do
     |> Enum.map(&elem(&1, 1))
     |> Enum.filter(&(&1 <= min_size))
     |> Enum.sum()
+  end
+
+  def part_a_impl(lines) do
+    Enum.map(lines, &parse_line/1)
+    |> group_instructions_with_results()
+    |> build_filesystem_tree()
+    |> sum_all_dirs_at_most_size_x(100000)
   end
 
   def part_a() do

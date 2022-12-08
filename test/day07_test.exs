@@ -90,7 +90,10 @@ defmodule Day07Test do
 
   test "Sum all dirs of at most X" do
     assert Day07.sum_all_dirs_at_most_size_x(test_filesystem_tree(), 10) == 7
-    # assert Day07.sum_all_dirs_at_most_size_x(example_input(), ) == 45
+  end
+
+  test "Part A example input" do
+    assert Day07.part_a_impl(example_input()) == 95437
   end
 
   defp example_input() do
