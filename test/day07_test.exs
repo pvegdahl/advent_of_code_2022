@@ -61,6 +61,19 @@ defmodule Day07Test do
              %{"/" => [{:file, "one.txt", 24601}, {:dir, "some_dir"}], "some_dir" => [{:file, "two.txt", 321}]}
   end
 
+  test "Use cd .. correctly when building the tree" do
+    assert Day07.build_filesystem_tree(
+             cd: "/",
+             ls: [{:dir, "roger"}, {:dir, "lawrence"}],
+             cd: "roger",
+             ls: [{:file, "roger.txt", 20180109}],
+             cd: "..",
+             cd: "lawrence",
+             ls: [{:file, "lawrence.txt", 20200515}],
+           ) ==
+             %{"/" => [{:dir, "roger"}, {:dir, "lawrence"}], "roger" => [{:file, "roger.txt", 20180109}], "lawrence" => [{:file, "lawrence.txt", 20200515}]}
+  end
+
   def example_input() do
     [
       "$ cd /",
