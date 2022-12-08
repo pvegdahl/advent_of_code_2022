@@ -88,6 +88,10 @@ defmodule Day07Test do
     assert Day07.all_path_sizes(test_filesystem_tree()) == %{["roger", "/"] => 4, ["lawrence", "/"] => 3, ["/"] => 41}
   end
 
+  test "Sum all dirs of at least X" do
+    assert Day07.sum_all_dirs_at_least_size_x(test_filesystem_tree(), 4) == 45
+  end
+
   defp example_input() do
     [
       "$ cd /",

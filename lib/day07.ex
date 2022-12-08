@@ -60,6 +60,14 @@ defmodule Day07 do
   defp file_or_dir_size({:file, _name, size}, _filesystem_tree, _path), do: size
   defp file_or_dir_size({:dir, dir_name}, filesystem_tree, path), do: path_size(filesystem_tree, [dir_name | path])
 
+  def sum_all_dirs_at_least_size_x(filesystem_tree, min_size) do
+    all_path_sizes(filesystem_tree)
+    |> Map.to_list()
+    |> Enum.map(&elem(&1, 1))
+    |> Enum.filter(&(&1 >= min_size))
+    |> Enum.sum()
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day07.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
