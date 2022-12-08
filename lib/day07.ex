@@ -50,6 +50,13 @@ defmodule Day07 do
     |> Enum.sum()
   end
 
+  def all_path_sizes(filesystem_tree) do
+    for path <- Map.keys(filesystem_tree) do
+      {path, path_size(filesystem_tree, path)}
+    end
+    |> Enum.into(%{})
+  end
+
   defp file_or_dir_size({:file, _name, size}, _filesystem_tree, _path), do: size
   defp file_or_dir_size({:dir, dir_name}, filesystem_tree, path), do: path_size(filesystem_tree, [dir_name | path])
 
