@@ -13,7 +13,7 @@ defmodule Day06 do
   defp check_packet_begin(unique_chars, _packet_tail, position, unique_chars), do: position
 
   defp check_packet_begin(_distinct_chars, packet_tail, position, unique_chars) do
-    packet_begin_position(packet_tail, position+1, unique_chars)
+    packet_begin_position(packet_tail, position + 1, unique_chars)
   end
 
   def part_a() do

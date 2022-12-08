@@ -24,14 +24,31 @@ defmodule Day07Test do
   end
 
   test "group ls instructions grouped with results" do
-    assert Day07.group_instructions_with_results([:ls, {:file, "thing.txt", 24601}]) == [ls: [{:file, "thing.txt", 24601}]]
-    assert Day07.group_instructions_with_results([:ls, {:file, "one.txt", 24601}, {:dir, "two"}]) == [ls: [{:file, "one.txt", 24601}, {:dir, "two"}]]
-    assert Day07.group_instructions_with_results([:ls, {:file, "one.txt", 24601}, :ls, {:dir, "two"}]) == [ls: [{:file, "one.txt", 24601}], ls: [{:dir, "two"}]]
+    assert Day07.group_instructions_with_results([:ls, {:file, "thing.txt", 24601}]) == [
+             ls: [{:file, "thing.txt", 24601}]
+           ]
+
+    assert Day07.group_instructions_with_results([:ls, {:file, "one.txt", 24601}, {:dir, "two"}]) ==
+             [ls: [{:file, "one.txt", 24601}, {:dir, "two"}]]
+
+    assert Day07.group_instructions_with_results([
+             :ls,
+             {:file, "one.txt", 24601},
+             :ls,
+             {:dir, "two"}
+           ]) == [ls: [{:file, "one.txt", 24601}], ls: [{:dir, "two"}]]
   end
 
   test "group a list with cd and ls instructions" do
-    assert Day07.group_instructions_with_results([{:cd, "a"}, :ls, {:file, "one.txt", 24601}, {:cd, "b"}, :ls, {:dir, "two"}]) ==
-       [cd: "a", ls: [{:file, "one.txt", 24601}], cd: "b", ls: [{:dir, "two"}]]
+    assert Day07.group_instructions_with_results([
+             {:cd, "a"},
+             :ls,
+             {:file, "one.txt", 24601},
+             {:cd, "b"},
+             :ls,
+             {:dir, "two"}
+           ]) ==
+             [cd: "a", ls: [{:file, "one.txt", 24601}], cd: "b", ls: [{:dir, "two"}]]
   end
 
   def example_input() do
@@ -58,7 +75,7 @@ defmodule Day07Test do
       "4060174 j",
       "8033020 d.log",
       "5626152 d.ext",
-      "7214296 k",
+      "7214296 k"
     ]
   end
 end
