@@ -97,6 +97,7 @@ defmodule Day07 do
 
   def smallest_dir_to_delete(filesystem_tree) do
     required_size = get_required_space(filesystem_tree)
+
     all_path_sizes(filesystem_tree)
     |> Map.to_list()
     |> Enum.map(&elem(&1, 1))
@@ -109,7 +110,6 @@ defmodule Day07 do
     input_to_filesystem_tree(lines)
     |> smallest_dir_to_delete()
   end
-
 
   def part_b() do
     File.stream!("puzzle_input/day07.txt", [:utf8])

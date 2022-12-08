@@ -112,15 +112,15 @@ defmodule Day07Test do
   end
 
   test "get required space" do
-    assert Day07.get_required_space(example_filesystem_tree()) == 8381165
+    assert Day07.get_required_space(example_filesystem_tree()) == 8_381_165
   end
 
   test "get smallest dir size to delete" do
-    assert Day07.smallest_dir_to_delete(example_filesystem_tree()) == 24933642
+    assert Day07.smallest_dir_to_delete(example_filesystem_tree()) == 24_933_642
   end
 
   test "Part B example input" do
-    assert Day07.part_b_impl(example_input()) == 24933642
+    assert Day07.part_b_impl(example_input()) == 24_933_642
   end
 
   defp example_input() do
