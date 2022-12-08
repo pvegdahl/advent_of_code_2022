@@ -14,6 +14,10 @@ defmodule Day07Test do
     assert Day07.parse_line("123 file.name") == {:file, "file.name", 123}
   end
 
+  test "Parse a directory result" do
+    assert Day07.parse_line("dir abc") == {:dir, "abc"}
+  end
+
 end
 
 
