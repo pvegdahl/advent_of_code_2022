@@ -31,7 +31,11 @@ defmodule Day07 do
 
   defp build_filesystem_tree([], _current_pos, complete_tree), do: complete_tree
 
-  defp build_filesystem_tree([{:cd, ".."} | instruction_tail], [_path_head | path_tail], tree_so_far) do
+  defp build_filesystem_tree(
+         [{:cd, ".."} | instruction_tail],
+         [_path_head | path_tail],
+         tree_so_far
+       ) do
     build_filesystem_tree(instruction_tail, path_tail, tree_so_far)
   end
 
@@ -58,7 +62,9 @@ defmodule Day07 do
   end
 
   defp file_or_dir_size({:file, _name, size}, _filesystem_tree, _path), do: size
-  defp file_or_dir_size({:dir, dir_name}, filesystem_tree, path), do: path_size(filesystem_tree, [dir_name | path])
+
+  defp file_or_dir_size({:dir, dir_name}, filesystem_tree, path),
+    do: path_size(filesystem_tree, [dir_name | path])
 
   def sum_all_dirs_at_most_size_x(filesystem_tree, min_size) do
     all_path_sizes(filesystem_tree)
@@ -72,7 +78,7 @@ defmodule Day07 do
     Enum.map(lines, &parse_line/1)
     |> group_instructions_with_results()
     |> build_filesystem_tree()
-    |> sum_all_dirs_at_most_size_x(100000)
+    |> sum_all_dirs_at_most_size_x(100_000)
   end
 
   def part_a() do

@@ -58,7 +58,10 @@ defmodule Day07Test do
              cd: "some_dir",
              ls: [{:file, "two.txt", 321}]
            ) ==
-             %{["/"] => [{:file, "one.txt", 24601}, {:dir, "some_dir"}], ["some_dir", "/"] => [{:file, "two.txt", 321}]}
+             %{
+               ["/"] => [{:file, "one.txt", 24601}, {:dir, "some_dir"}],
+               ["some_dir", "/"] => [{:file, "two.txt", 321}]
+             }
   end
 
   test "Use cd .. correctly when building the tree" do
@@ -66,12 +69,16 @@ defmodule Day07Test do
              cd: "/",
              ls: [{:dir, "roger"}, {:dir, "lawrence"}],
              cd: "roger",
-             ls: [{:file, "roger.txt", 20180109}],
+             ls: [{:file, "roger.txt", 20_180_109}],
              cd: "..",
              cd: "lawrence",
-             ls: [{:file, "lawrence.txt", 20200515}],
+             ls: [{:file, "lawrence.txt", 20_200_515}]
            ) ==
-             %{["/"] => [{:dir, "roger"}, {:dir, "lawrence"}], ["roger", "/"] => [{:file, "roger.txt", 20180109}], ["lawrence", "/"] => [{:file, "lawrence.txt", 20200515}]}
+             %{
+               ["/"] => [{:dir, "roger"}, {:dir, "lawrence"}],
+               ["roger", "/"] => [{:file, "roger.txt", 20_180_109}],
+               ["lawrence", "/"] => [{:file, "lawrence.txt", 20_200_515}]
+             }
   end
 
   test "get total sizes of a path" do
@@ -81,11 +88,19 @@ defmodule Day07Test do
   end
 
   defp test_filesystem_tree() do
-    %{["/"] => [{:dir, "roger"}, {:dir, "lawrence"}, {:file, "ann", 34}], ["roger", "/"] => [{:file, "roger.txt", 4}], ["lawrence", "/"] => [{:file, "lawrence.txt", 2}, {:file, "emmanual", 1}]}
+    %{
+      ["/"] => [{:dir, "roger"}, {:dir, "lawrence"}, {:file, "ann", 34}],
+      ["roger", "/"] => [{:file, "roger.txt", 4}],
+      ["lawrence", "/"] => [{:file, "lawrence.txt", 2}, {:file, "emmanual", 1}]
+    }
   end
 
   test "get sizes of all directories" do
-    assert Day07.all_path_sizes(test_filesystem_tree()) == %{["roger", "/"] => 4, ["lawrence", "/"] => 3, ["/"] => 41}
+    assert Day07.all_path_sizes(test_filesystem_tree()) == %{
+             ["roger", "/"] => 4,
+             ["lawrence", "/"] => 3,
+             ["/"] => 41
+           }
   end
 
   test "Sum all dirs of at most X" do
