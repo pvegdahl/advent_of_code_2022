@@ -25,6 +25,8 @@ defmodule Day07Test do
 
   test "group ls instructions grouped with results" do
     assert Day07.group_instructions_with_results([:ls, {:file, "thing.txt", 24601}]) == [ls: [{:file, "thing.txt", 24601}]]
+    assert Day07.group_instructions_with_results([:ls, {:file, "one.txt", 24601}, {:dir, "two"}]) == [ls: [{:file, "one.txt", 24601}, {:dir, "two"}]]
+    assert Day07.group_instructions_with_results([:ls, {:file, "one.txt", 24601}, :ls, {:dir, "two"}]) == [ls: [{:file, "one.txt", 24601}], ls: [{:dir, "two"}]]
   end
 
   def example_input() do

@@ -8,12 +8,18 @@ defmodule Day07 do
     end
   end
 
+  def group_instructions_with_results([]), do: []
   def group_instructions_with_results([:ls | tail]) do
-    [ls: tail]
+    [{:ls, Enum.take_while(tail, &ls_result?/1)} | group_instructions_with_results(Enum.drop_while(tail, &ls_result?/1))]
   end
+
   def group_instructions_with_results(parsed_lines) do
     parsed_lines
   end
+
+  def ls_result?({:file, _, _}), do: true
+  def ls_result?({:dir, _}), do: true
+  def ls_result?(_), do: false
 
   def part_a() do
     # File.stream!("puzzle_input/day07.txt", [:utf8])
