@@ -6,6 +6,10 @@ defmodule Day07Test do
     assert Day07.parse_line("$ cd longer_name") == {:cd, "longer_name"}
   end
 
+  test "Parse an ls instruction" do
+    assert Day07.parse_line("$ ls") == {:ls}
+  end
+
 end
 
 
