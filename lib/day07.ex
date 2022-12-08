@@ -8,6 +8,10 @@ defmodule Day07 do
     end
   end
 
+  def group_instructions_with_results(parsed_lines) do
+    parsed_lines
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day07.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
