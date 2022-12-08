@@ -3,6 +3,7 @@ defmodule Day07 do
     case String.split(line, " ") do
       ["$", "cd", dir_name] -> {:cd, dir_name}
       ["$", "ls"] -> {:ls}
+      [file_size, file_name] -> {:file, file_name, String.to_integer(file_size)}
     end
   end
 

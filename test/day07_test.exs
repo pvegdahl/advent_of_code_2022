@@ -10,6 +10,10 @@ defmodule Day07Test do
     assert Day07.parse_line("$ ls") == {:ls}
   end
 
+  test "Parse a file result" do
+    assert Day07.parse_line("123 file.name") == {:file, "file.name", 123}
+  end
+
 end
 
 
