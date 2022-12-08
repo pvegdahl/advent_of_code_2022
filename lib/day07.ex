@@ -1,6 +1,7 @@
 defmodule Day07 do
   def parse_line(line) do
-    {:cd, String.at(line, 5)}
+    dir_name = parts = String.split(line, " ") |> Enum.at(2)
+    {:cd, dir_name}
   end
 
   def part_a() do
