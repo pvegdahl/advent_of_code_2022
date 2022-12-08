@@ -46,9 +46,12 @@ defmodule Day07 do
 
   def path_size(filesystem_tree, path) do
     Map.get(filesystem_tree, path)
-    |> Enum.map(&elem(&1, 2))
+    |> Enum.map(&file_or_dir_size(&1, filesystem_tree, path))
     |> Enum.sum()
   end
+
+  defp file_or_dir_size({:file, _name, size}, _filesystem_tree, _path), do: size
+  defp file_or_dir_size({:dir, dir_name}, filesystem_tree, path), do: path_size(filesystem_tree, [dir_name | path])
 
   def part_a() do
     # File.stream!("puzzle_input/day07.txt", [:utf8])
