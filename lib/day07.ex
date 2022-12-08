@@ -25,6 +25,21 @@ defmodule Day07 do
   def ls_result?({:dir, _}), do: true
   def ls_result?(_), do: false
 
+  def build_filesystem_tree([{:cd, "/"} | tail]) do
+    build_filesystem_tree(tail, ["/"], %{})
+  end
+
+  defp build_filesystem_tree([], _current_pos, complete_tree), do: complete_tree
+
+  defp build_filesystem_tree([{:cd, dir} | instruction_tail], current_pos, tree_so_far) do
+    build_filesystem_tree(instruction_tail, [dir | current_pos], tree_so_far)
+  end
+
+  defp build_filesystem_tree([{:ls, contents} | instruction_tail], [current_dir | _pos_tail] = path, tree_so_far) do
+    new_tree = Map.put(tree_so_far, current_dir, contents)
+    build_filesystem_tree(instruction_tail, path, new_tree)
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day07.txt", [:utf8])
     # |> Stream.map(&String.trim/1)

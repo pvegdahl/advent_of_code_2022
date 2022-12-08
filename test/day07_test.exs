@@ -51,6 +51,16 @@ defmodule Day07Test do
              [cd: "a", ls: [{:file, "one.txt", 24601}], cd: "b", ls: [{:dir, "two"}]]
   end
 
+  test "Build the the filesystem tree" do
+    assert Day07.build_filesystem_tree(
+             cd: "/",
+             ls: [{:file, "one.txt", 24601}, {:dir, "some_dir"}],
+             cd: "some_dir",
+             ls: [{:file, "two.txt", 321}]
+           ) ==
+             %{"/" => [{:file, "one.txt", 24601}, {:dir, "some_dir"}], "some_dir" => [{:file, "two.txt", 321}]}
+  end
+
   def example_input() do
     [
       "$ cd /",
