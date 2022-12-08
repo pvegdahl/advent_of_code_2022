@@ -8,6 +8,9 @@ defmodule Day07 do
     end
   end
 
+  def group_instructions_with_results([{:ls} | tail]) do
+    [ls: tail]
+  end
   def group_instructions_with_results(parsed_lines) do
     parsed_lines
   end
