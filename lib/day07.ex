@@ -1,9 +1,6 @@
 defmodule Day07 do
   def parse_line(line) do
-    [leading_whitespace, spec] = String.trim_trailing(line) |> String.split("- ")
-    depth = String.length(leading_whitespace) |> div(2)
-    [dir_name | _] = String.split(spec, " ")
-    {:dir, dir_name, depth}
+    {:cd, String.at(line, 5)}
   end
 
   def part_a() do
