@@ -31,6 +31,10 @@ defmodule Day07 do
 
   defp build_filesystem_tree([], _current_pos, complete_tree), do: complete_tree
 
+  defp build_filesystem_tree([{:cd, ".."} | instruction_tail], [_path_head | path_tail], tree_so_far) do
+    build_filesystem_tree(instruction_tail, path_tail, tree_so_far)
+  end
+
   defp build_filesystem_tree([{:cd, dir} | instruction_tail], path, tree_so_far) do
     build_filesystem_tree(instruction_tail, [dir | path], tree_so_far)
   end
