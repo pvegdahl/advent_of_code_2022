@@ -50,7 +50,7 @@ defmodule Day09Test do
   end
 
   test "do a list of repeated moves" do
-    assert Day09.list_of_moves([{{1, 0}, 2}, {{0, -1}, 3}]) == {%{head: {2, -3}, tail: {2, -2}}, [{2, -2}, {2, -1}, {1, 0}, {1, 0}, {0, 0}]}
+    assert Day09.list_of_moves([{{1, 0}, 2}, {{0, -1}, 3}]) == {[{2, -3}, {2, -2}], [{2, -2}, {2, -1}, {1, 0}, {1, 0}, {0, 0}]}
   end
 
   test "Count unique tail positions from moves" do

@@ -37,11 +37,6 @@ defmodule Day09 do
     [new_first_tail | update_multiple_tail_knots(new_first_tail, other_tails)]
   end
 
-  def repeated_move_both(%{head: head_pos, tail: tail_pos}, move) do
-    {[new_head, new_tail], new_tail_history} = repeated_move_all([head_pos, tail_pos], move)
-    {%{head: new_head, tail: new_tail}, new_tail_history}
-  end
-
   def repeated_move_all(positions, move) do
     repeated_move_all(positions, move, [])
   end
@@ -53,11 +48,11 @@ defmodule Day09 do
   end
 
   def list_of_moves(moves) do
-    Enum.reduce(moves, {%{tail: {0, 0}, head: {0, 0}} , []}, &my_reducer_func/2)
+    Enum.reduce(moves, {[{0, 0}, {0, 0}] , []}, &my_reducer_func/2)
   end
 
   defp my_reducer_func(move, {positions, tail_history}) do
-    {new_positions, added_tail_history} = repeated_move_both(positions, move)
+    {new_positions, added_tail_history} = repeated_move_all(positions, move)
     {new_positions, added_tail_history ++ tail_history}
   end
 
