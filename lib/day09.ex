@@ -12,7 +12,7 @@ defmodule Day09 do
   defp direction_string_to_vector("U"), do: {0, 1}
   defp direction_string_to_vector("D"), do: {0, -1}
 
-  def update_rope_head({x, y}, {dx, dy}), do: {x+dx, y+dy}
+  def update_pos_with_vector({x, y}, {dx, dy}), do: {x+dx, y+dy}
 
   def part_a() do
     # File.stream!("puzzle_input/day09.txt", [:utf8])

@@ -9,11 +9,11 @@ defmodule Day09Test do
     assert Day09.parse_line("D 5") == {{0, -1}, 5}
   end
 
-  test "update rope head position" do
-    assert Day09.update_rope_head({0, 0}, {1, 0}) == {1, 0}
-    assert Day09.update_rope_head({0, 0}, {-1, 0}) == {-1, 0}
-    assert Day09.update_rope_head({2, 2}, {-1, 0}) == {1, 2}
-    assert Day09.update_rope_head({3, -3}, {0, 1}) == {3, -2}
-    assert Day09.update_rope_head({3, 5}, {0, -1}) == {3, 4}
+  test "update position from vector" do
+    assert Day09.update_pos_with_vector({0, 0}, {1, 0}) == {1, 0}
+    assert Day09.update_pos_with_vector({0, 0}, {-1, 0}) == {-1, 0}
+    assert Day09.update_pos_with_vector({2, 2}, {-1, 0}) == {1, 2}
+    assert Day09.update_pos_with_vector({3, -3}, {0, 1}) == {3, -2}
+    assert Day09.update_pos_with_vector({3, 5}, {0, -1}) == {3, 4}
   end
 end
