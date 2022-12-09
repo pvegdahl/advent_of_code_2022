@@ -59,6 +59,12 @@ defmodule Day09 do
     |> Enum.count()
   end
 
+  def part_a_impl(lines) do
+    lines
+    |> Enum.map(&parse_line/1)
+    |> unique_tail_positions_from_moves()
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day09.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
