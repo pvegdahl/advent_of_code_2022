@@ -2,15 +2,17 @@ defmodule Day09 do
   def parse_line(line) do
     parts = String.split(line, " ")
     number = parts |> Enum.at(1) |> String.to_integer()
-    direction = parts |> Enum.at(0) |> direction_string_to_atom()
+    direction = parts |> Enum.at(0) |> direction_string_to_vector()
 
     {direction, number}
   end
 
-  defp direction_string_to_atom("R"), do: :right
-  defp direction_string_to_atom("L"), do: :left
-  defp direction_string_to_atom("U"), do: :up
-  defp direction_string_to_atom("D"), do: :down
+  defp direction_string_to_vector("R"), do: {1, 0}
+  defp direction_string_to_vector("L"), do: {-1, 0}
+  defp direction_string_to_vector("U"), do: {0, 1}
+  defp direction_string_to_vector("D"), do: {0, -1}
+
+  def update_rope_head({x, y}, {dx, dy}), do: {x+dx, y+dy}
 
   def part_a() do
     # File.stream!("puzzle_input/day09.txt", [:utf8])
