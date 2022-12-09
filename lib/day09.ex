@@ -18,6 +18,10 @@ defmodule Day09 do
     {dx, dy} = {head_x - tail_x, head_y - tail_y}
 
     case {dx, dy} do
+      {2, 2} -> {tail_x + 1, tail_y + 1}
+      {-2, 2} -> {tail_x - 1, tail_y + 1}
+      {2, -2} -> {tail_x + 1, tail_y - 1}
+      {-2, -2} -> {tail_x - 1, tail_y - 1}
       {2, _dy} -> {tail_x + 1, head_y}
       {-2, _dy} -> {tail_x - 1, head_y}
       {_dx, 2} -> {head_x, tail_y + 1}

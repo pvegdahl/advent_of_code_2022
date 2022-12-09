@@ -45,6 +45,13 @@ defmodule Day09Test do
     assert Day09.update_rope_tail_from_rope_head({5, 1}, {7, 0}) == {6, 0}
   end
 
+  test "update the tail position when the head gets 2x2 away (possible in part B only)" do
+    assert Day09.update_rope_tail_from_rope_head({1, 2}, {3, 4}) == {2, 3}
+    assert Day09.update_rope_tail_from_rope_head({1, 2}, {-1, 4}) == {0, 3}
+    assert Day09.update_rope_tail_from_rope_head({1, 2}, {3, 0}) == {2, 1}
+    assert Day09.update_rope_tail_from_rope_head({1, 2}, {-1, 0}) == {0, 1}
+  end
+
   test "do repeated moves and record the positions" do
     assert Day09.repeated_move_all([{0, 0}, {0, 0}], {{1, 0}, 5}) ==
              {[{5, 0}, {4, 0}], [{4, 0}, {3, 0}, {2, 0}, {1, 0}, {0, 0}]}
@@ -76,6 +83,14 @@ defmodule Day09Test do
 
   test "Part B example input" do
     assert Day09.implementation(example_input_b(), 10) == 36
+  end
+
+  test "Some random examples and I think I can sort out myself" do
+    # assert Day09.implementation(["R 9"], 10) == 1
+    # assert Day09.implementation(["R 10"], 10) == 2
+    # assert Day09.implementation(["R 100"], 10) == 92
+    # assert Day09.implementation(["R 9", "L 18"], 10) == 1
+    assert Day09.implementation(["R 2", "U 3"], 3) == 2
   end
 
   defp example_input_b(), do: ["R 5", "U 8", "L 8", "D 3", "R 17", "D 10", "L 25", "U 20"]
