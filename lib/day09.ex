@@ -52,8 +52,8 @@ defmodule Day09 do
     ])
   end
 
-  def list_of_moves(moves, rope_size \\ 2) do
-    Enum.reduce(moves, {List.duplicate({0, 0}, rope_size), []}, &my_reducer_func/2)
+  def list_of_moves(moves, knot_count \\ 2) do
+    Enum.reduce(moves, {List.duplicate({0, 0}, knot_count), []}, &my_reducer_func/2)
   end
 
   defp my_reducer_func(move, {positions, tail_history}) do
@@ -61,24 +61,24 @@ defmodule Day09 do
     {new_positions, added_tail_history ++ tail_history}
   end
 
-  def unique_tail_positions_from_moves(moves) do
+  def unique_tail_positions_from_moves(moves, knot_count \\ 2) do
     moves
-    |> list_of_moves()
+    |> list_of_moves(knot_count)
     |> elem(1)
     |> Enum.uniq()
     |> Enum.count()
   end
 
-  def part_a_impl(lines) do
+  def implementation(lines, knot_count \\ 2) do
     lines
     |> Enum.map(&parse_line/1)
-    |> unique_tail_positions_from_moves()
+    |> unique_tail_positions_from_moves(knot_count)
   end
 
   def part_a() do
     File.stream!("puzzle_input/day09.txt", [:utf8])
     |> Stream.map(&String.trim/1)
-    |> part_a_impl()
+    |> implementation()
   end
 
   def part_b() do

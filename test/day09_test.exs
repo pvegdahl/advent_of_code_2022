@@ -60,7 +60,7 @@ defmodule Day09Test do
   end
 
   test "Part A example input" do
-    assert Day09.part_a_impl(example_input()) == 13
+    assert Day09.implementation(example_input(), 2) == 13
   end
 
   test "Move a 4 part rope" do
