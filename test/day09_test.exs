@@ -16,4 +16,11 @@ defmodule Day09Test do
     assert Day09.update_pos_with_vector({3, -3}, {0, 1}) == {3, -2}
     assert Day09.update_pos_with_vector({3, 5}, {0, -1}) == {3, 4}
   end
+
+  test "don't update the tail position of the rope tail when the head is close" do
+    assert Day09.update_rope_tail_from_rope_head({86, 99}, {86, 99}) == {86, 99}
+    assert Day09.update_rope_tail_from_rope_head({86, 99}, {86, 100}) == {86, 99}
+    assert Day09.update_rope_tail_from_rope_head({86, 99}, {85, 99}) == {86, 99}
+    assert Day09.update_rope_tail_from_rope_head({86, 99}, {87, 98}) == {86, 99}
+  end
 end

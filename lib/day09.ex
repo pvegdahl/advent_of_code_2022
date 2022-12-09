@@ -14,6 +14,8 @@ defmodule Day09 do
 
   def update_pos_with_vector({x, y}, {dx, dy}), do: {x+dx, y+dy}
 
+  def update_rope_tail_from_rope_head(tail_pos, _), do: tail_pos
+
   def part_a() do
     # File.stream!("puzzle_input/day09.txt", [:utf8])
     # |> Stream.map(&String.trim/1)
