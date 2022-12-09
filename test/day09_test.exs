@@ -26,5 +26,8 @@ defmodule Day09Test do
 
   test "update the tail position of the rope tail when the head is too far away" do
     assert Day09.update_rope_tail_from_rope_head({2, 3}, {4, 3}) == {3, 3}
+    assert Day09.update_rope_tail_from_rope_head({2, 3}, {0, 3}) == {1, 3}
+    assert Day09.update_rope_tail_from_rope_head({2, 3}, {2, 5}) == {2, 4}
+    assert Day09.update_rope_tail_from_rope_head({2, 3}, {2, 1}) == {2, 2}
   end
 end
