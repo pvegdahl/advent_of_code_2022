@@ -46,7 +46,7 @@ defmodule Day09Test do
   end
 
   test "do repeated moves and record the positions" do
-    assert Day09.repeated_move_both(%{head: {0, 0}, tail: {0, 0}}, {{1, 0}, 5}) == {%{head: {5, 0}, tail: {4, 0}}, [{4, 0}, {3, 0}, {2, 0}, {1, 0}, {0, 0}]}
+    assert Day09.repeated_move_all([{0, 0}, {0, 0}], {{1, 0}, 5}) == {[{5, 0}, {4, 0}], [{4, 0}, {3, 0}, {2, 0}, {1, 0}, {0, 0}]}
   end
 
   test "do a list of repeated moves" do

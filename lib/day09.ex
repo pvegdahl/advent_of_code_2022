@@ -25,12 +25,6 @@ defmodule Day09 do
     end
   end
 
-  def move_both(%{head: head_pos, tail: tail_pos}, vector) do
-    new_head = update_pos_with_vector(head_pos, vector)
-    new_tail = update_rope_tail_from_rope_head(tail_pos, new_head)
-    %{head: new_head, tail: new_tail}
-  end
-
   def move_multiple_knots([head_knot | tail_knots], vector) do
     new_head = update_pos_with_vector(head_knot, vector)
     [new_head | update_multiple_tail_knots(new_head, tail_knots)]
@@ -44,8 +38,12 @@ defmodule Day09 do
   end
 
   def repeated_move_both(%{head: head_pos, tail: tail_pos}, move) do
-    {[new_head, new_tail], new_tail_history} = repeated_move_all([head_pos, tail_pos], move, [])
+    {[new_head, new_tail], new_tail_history} = repeated_move_all([head_pos, tail_pos], move)
     {%{head: new_head, tail: new_tail}, new_tail_history}
+  end
+
+  def repeated_move_all(positions, move) do
+    repeated_move_all(positions, move, [])
   end
 
   defp repeated_move_all(positions, {_vector, 0}, tail_history), do: {positions, tail_history}
