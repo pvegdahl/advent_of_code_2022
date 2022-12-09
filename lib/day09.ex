@@ -25,8 +25,10 @@ defmodule Day09 do
     end
   end
 
-  def move(%{head: head_pos, tail: tail_pos}, {vector, count}) do
-    %{head: vector, tail: tail_pos}
+  def move_both(%{head: head_pos, tail: tail_pos}, vector) do
+    new_head = update_pos_with_vector(head_pos, vector)
+    new_tail = update_rope_tail_from_rope_head(tail_pos, new_head)
+    %{head: new_head, tail: new_tail}
   end
 
   def part_a() do

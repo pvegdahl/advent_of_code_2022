@@ -46,6 +46,8 @@ defmodule Day09Test do
   end
 
   test "do a series of head, tail moves" do
-    assert Day09.move(%{head: {0, 0}, tail: {0, 0}}, {{1, 0}, 1}) == %{head: {1, 0}, tail: {0, 0}}
+    assert Day09.move_both(%{head: {0, 0}, tail: {0, 0}}, {1, 0}) == %{head: {1, 0}, tail: {0, 0}}
+    assert Day09.move_both(%{head: {1, 0}, tail: {1, 0}}, {1, 0}) == %{head: {2, 0}, tail: {1, 0}}
+    assert Day09.move_both(%{head: {1, 0}, tail: {0, 0}}, {1, 0}) == %{head: {2, 0}, tail: {1, 0}}
   end
 end
