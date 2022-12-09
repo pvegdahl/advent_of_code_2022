@@ -24,7 +24,10 @@ defmodule Day09 do
       _ -> {tail_x, tail_y}
     end
   end
-  # def update_rope_tail_from_rope_head(tail_pos, _), do: tail_pos
+
+  def move(%{head: head_pos, tail: tail_pos}, {vector, count}) do
+    %{head: vector, tail: tail_pos}
+  end
 
   def part_a() do
     # File.stream!("puzzle_input/day09.txt", [:utf8])

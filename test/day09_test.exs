@@ -44,4 +44,8 @@ defmodule Day09Test do
     assert Day09.update_rope_tail_from_rope_head({5, 1}, {7, 2}) == {6, 2}
     assert Day09.update_rope_tail_from_rope_head({5, 1}, {7, 0}) == {6, 0}
   end
+
+  test "do a series of head, tail moves" do
+    assert Day09.move(%{head: {0, 0}, tail: {0, 0}}, {{1, 0}, 1}) == %{head: {1, 0}, tail: {0, 0}}
+  end
 end
