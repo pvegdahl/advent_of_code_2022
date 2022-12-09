@@ -17,10 +17,10 @@ defmodule Day09 do
   def update_rope_tail_from_rope_head({tail_x, tail_y}, {head_x, head_y}) do
     {dx, dy} = {head_x - tail_x, head_y - tail_y}
     case {dx, dy} do
-      {2, 0} -> {tail_x+1, tail_y}
-      {-2, 0} -> {tail_x-1, tail_y}
-      {0, 2} -> {tail_x, tail_y+1}
-      {0, -2} -> {tail_x, tail_y-1}
+      {2, _dy} -> {tail_x+1, head_y}
+      {-2, _dy} -> {tail_x-1, head_y}
+      {_dx, 2} -> {head_x, tail_y+1}
+      {_dx, -2} -> {head_x, tail_y-1}
       _ -> {tail_x, tail_y}
     end
   end

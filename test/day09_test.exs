@@ -30,4 +30,18 @@ defmodule Day09Test do
     assert Day09.update_rope_tail_from_rope_head({2, 3}, {2, 5}) == {2, 4}
     assert Day09.update_rope_tail_from_rope_head({2, 3}, {2, 1}) == {2, 2}
   end
+
+  test "don't update the tail position for close diagonal cases" do
+    assert Day09.update_rope_tail_from_rope_head({2, 3}, {3, 4}) == {2, 3}
+    assert Day09.update_rope_tail_from_rope_head({2, 3}, {1, 4}) == {2, 3}
+    assert Day09.update_rope_tail_from_rope_head({2, 3}, {1, 2}) == {2, 3}
+    assert Day09.update_rope_tail_from_rope_head({2, 3}, {3, 2}) == {2, 3}
+  end
+
+  test "update the tail position for diagonal cases" do
+    assert Day09.update_rope_tail_from_rope_head({5, 1}, {4, 3}) == {4, 2}
+    assert Day09.update_rope_tail_from_rope_head({5, 1}, {3, 2}) == {4, 2}
+    assert Day09.update_rope_tail_from_rope_head({5, 1}, {7, 2}) == {6, 2}
+    assert Day09.update_rope_tail_from_rope_head({5, 1}, {7, 0}) == {6, 0}
+  end
 end
