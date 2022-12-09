@@ -31,6 +31,17 @@ defmodule Day09 do
     %{head: new_head, tail: new_tail}
   end
 
+  def repeated_move_both(positions, {vector, count}) do
+    repeated_move_both(positions, {vector, count}, [])
+  end
+
+  defp repeated_move_both(positions, {vector, 0}, tail_history), do: {positions, tail_history}
+
+  defp repeated_move_both(positions, {vector, count}, tail_history) do
+    %{tail: tail_pos} = new_positions = move_both(positions, vector)
+    repeated_move_both(new_positions, {vector, count - 1}, [tail_pos | tail_history])
+  end
+
   def part_a() do
     # File.stream!("puzzle_input/day09.txt", [:utf8])
     # |> Stream.map(&String.trim/1)

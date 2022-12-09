@@ -50,4 +50,8 @@ defmodule Day09Test do
     assert Day09.move_both(%{head: {1, 0}, tail: {1, 0}}, {1, 0}) == %{head: {2, 0}, tail: {1, 0}}
     assert Day09.move_both(%{head: {1, 0}, tail: {0, 0}}, {1, 0}) == %{head: {2, 0}, tail: {1, 0}}
   end
+
+  test "do repeated moves and record the positions" do
+    assert Day09.repeated_move_both(%{head: {0, 0}, tail: {0, 0}}, {{1, 0}, 5}) == {%{head: {5, 0}, tail: {4, 0}}, [{4, 0}, {3, 0}, {2, 0}, {1, 0}, {0, 0}]}
+  end
 end
