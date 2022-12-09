@@ -60,8 +60,10 @@ defmodule Day09Test do
   end
 
   test "Part A example input" do
-    assert Day09.implementation(example_input(), 2) == 13
+    assert Day09.implementation(example_input_a(), 2) == 13
   end
+
+  defp example_input_a(), do: ["R 4", "U 4", "L 3", "D 1", "R 4", "D 1", "L 5", "R 2"]
 
   test "Move a 4 part rope" do
     assert Day09.move_multiple_knots([{4, 0}, {3, 0}, {2, 1}, {1, 1}], {1, 0}) == [
@@ -72,5 +74,9 @@ defmodule Day09Test do
            ]
   end
 
-  defp example_input(), do: ["R 4", "U 4", "L 3", "D 1", "R 4", "D 1", "L 5", "R 2"]
+  test "Part B example input" do
+    assert Day09.implementation(example_input_b(), 10) == 36
+  end
+
+  defp example_input_b(), do: ["R 5", "U 8", "L 8", "D 3", "R 17", "D 10", "L 25", "U 20"]
 end
