@@ -12,15 +12,16 @@ defmodule Day09 do
   defp direction_string_to_vector("U"), do: {0, 1}
   defp direction_string_to_vector("D"), do: {0, -1}
 
-  def update_pos_with_vector({x, y}, {dx, dy}), do: {x+dx, y+dy}
+  def update_pos_with_vector({x, y}, {dx, dy}), do: {x + dx, y + dy}
 
   def update_rope_tail_from_rope_head({tail_x, tail_y}, {head_x, head_y}) do
     {dx, dy} = {head_x - tail_x, head_y - tail_y}
+
     case {dx, dy} do
-      {2, _dy} -> {tail_x+1, head_y}
-      {-2, _dy} -> {tail_x-1, head_y}
-      {_dx, 2} -> {head_x, tail_y+1}
-      {_dx, -2} -> {head_x, tail_y-1}
+      {2, _dy} -> {tail_x + 1, head_y}
+      {-2, _dy} -> {tail_x - 1, head_y}
+      {_dx, 2} -> {head_x, tail_y + 1}
+      {_dx, -2} -> {head_x, tail_y - 1}
       _ -> {tail_x, tail_y}
     end
   end
@@ -42,13 +43,17 @@ defmodule Day09 do
   end
 
   defp repeated_move_all(positions, {_vector, 0}, tail_history), do: {positions, tail_history}
+
   defp repeated_move_all(positions, {vector, count}, tail_history) do
     new_positions = move_multiple_knots(positions, vector)
-    repeated_move_all(new_positions, {vector, count - 1}, [List.last(new_positions) | tail_history])
+
+    repeated_move_all(new_positions, {vector, count - 1}, [
+      List.last(new_positions) | tail_history
+    ])
   end
 
   def list_of_moves(moves, rope_size \\ 2) do
-    Enum.reduce(moves, {List.duplicate({0, 0}, rope_size) , []}, &my_reducer_func/2)
+    Enum.reduce(moves, {List.duplicate({0, 0}, rope_size), []}, &my_reducer_func/2)
   end
 
   defp my_reducer_func(move, {positions, tail_history}) do

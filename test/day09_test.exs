@@ -46,11 +46,13 @@ defmodule Day09Test do
   end
 
   test "do repeated moves and record the positions" do
-    assert Day09.repeated_move_all([{0, 0}, {0, 0}], {{1, 0}, 5}) == {[{5, 0}, {4, 0}], [{4, 0}, {3, 0}, {2, 0}, {1, 0}, {0, 0}]}
+    assert Day09.repeated_move_all([{0, 0}, {0, 0}], {{1, 0}, 5}) ==
+             {[{5, 0}, {4, 0}], [{4, 0}, {3, 0}, {2, 0}, {1, 0}, {0, 0}]}
   end
 
   test "do a list of repeated moves" do
-    assert Day09.list_of_moves([{{1, 0}, 2}, {{0, -1}, 3}]) == {[{2, -3}, {2, -2}], [{2, -2}, {2, -1}, {1, 0}, {1, 0}, {0, 0}]}
+    assert Day09.list_of_moves([{{1, 0}, 2}, {{0, -1}, 3}]) ==
+             {[{2, -3}, {2, -2}], [{2, -2}, {2, -1}, {1, 0}, {1, 0}, {0, 0}]}
   end
 
   test "Count unique tail positions from moves" do
@@ -62,7 +64,12 @@ defmodule Day09Test do
   end
 
   test "Move a 4 part rope" do
-    assert Day09.move_multiple_knots([{4, 0}, {3, 0}, {2, 1}, {1, 1}], {1, 0}) == [{5, 0}, {4, 0}, {3, 0}, {2, 0}]
+    assert Day09.move_multiple_knots([{4, 0}, {3, 0}, {2, 1}, {1, 1}], {1, 0}) == [
+             {5, 0},
+             {4, 0},
+             {3, 0},
+             {2, 0}
+           ]
   end
 
   defp example_input(), do: ["R 4", "U 4", "L 3", "D 1", "R 4", "D 1", "L 5", "R 2"]
