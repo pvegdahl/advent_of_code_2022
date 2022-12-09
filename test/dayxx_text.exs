@@ -1,4 +1,3 @@
-# Template
 defmodule DayXXTest do
   use ExUnit.Case
 

@@ -1,4 +1,3 @@
-# Template
 defmodule DayXX do
   def parse_line(line) do
     []
@@ -15,5 +14,5 @@ defmodule DayXX do
   end
 end
 
-# IO.puts("Part A: #{DayXX.part_a()}")
-# IO.puts("Part B: #{DayXX.part_b()}")
+IO.puts("Part A: #{DayXX.part_a()}")
+IO.puts("Part B: #{DayXX.part_b()}")
