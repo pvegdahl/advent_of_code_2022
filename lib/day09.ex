@@ -53,10 +53,10 @@ defmodule Day09 do
     {%{head: new_head, tail: new_tail}, new_tail_history}
   end
 
-  defp repeated_move_all(positions, {vector, 0}, tail_history), do: {positions, tail_history}
-  defp repeated_move_all([head_pos, tail_pos], {vector, count}, tail_history) do
-    [new_head_pos, new_tail_pos] = new_positions = move_multiple_knots([head_pos, tail_pos], vector)
-    repeated_move_all(new_positions, {vector, count - 1}, [new_tail_pos | tail_history])
+  defp repeated_move_all(positions, {_vector, 0}, tail_history), do: {positions, tail_history}
+  defp repeated_move_all(positions, {vector, count}, tail_history) do
+    new_positions = move_multiple_knots(positions, vector)
+    repeated_move_all(new_positions, {vector, count - 1}, [List.last(new_positions) | tail_history])
   end
 
   def list_of_moves(moves) do
