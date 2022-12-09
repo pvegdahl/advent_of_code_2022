@@ -14,8 +14,14 @@ defmodule Day09 do
 
   def update_pos_with_vector({x, y}, {dx, dy}), do: {x+dx, y+dy}
 
-  def update_rope_tail_from_rope_head({tail_x, tail_y}, {head_x, head_y}) when head_x - tail_x == 2, do: {head_x-1, tail_y}
-  def update_rope_tail_from_rope_head(tail_pos, _), do: tail_pos
+  def update_rope_tail_from_rope_head({tail_x, tail_y}, {head_x, head_y}) do
+    {dx, dy} = {head_x - tail_x, head_y - tail_y}
+    case {dx, dy} do
+      {2, 0} -> {tail_x+1, tail_y}
+      _ -> {tail_x, tail_y}
+    end
+  end
+  # def update_rope_tail_from_rope_head(tail_pos, _), do: tail_pos
 
   def part_a() do
     # File.stream!("puzzle_input/day09.txt", [:utf8])
