@@ -67,5 +67,9 @@ defmodule Day09Test do
     assert Day09.part_a_impl(example_input()) == 13
   end
 
+  test "Move a 4 part rope" do
+    assert Day09.move_multiple_knots([{4, 0}, {3, 0}, {2, 1}, {1, 1}], {1, 0}) == [{5, 0}, {4, 0}, {3, 0}, {2, 0}]
+  end
+
   defp example_input(), do: ["R 4", "U 4", "L 3", "D 1", "R 4", "D 1", "L 5", "R 2"]
 end
