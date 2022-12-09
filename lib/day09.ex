@@ -78,14 +78,15 @@ defmodule Day09 do
   def part_a() do
     File.stream!("puzzle_input/day09.txt", [:utf8])
     |> Stream.map(&String.trim/1)
-    |> implementation()
+    |> implementation(2)
   end
 
   def part_b() do
-    # File.stream!("puzzle_input/day09.txt", [:utf8])
-    # |> Stream.map(&String.trim/1)
+    File.stream!("puzzle_input/day09.txt", [:utf8])
+    |> Stream.map(&String.trim/1)
+    |> implementation(10)
   end
 end
 
-IO.puts("Part A: #{Day09.part_a()}")
-IO.puts("Part B: #{Day09.part_b()}")
+IO.puts("9A: #{Day09.part_a()}")
+IO.puts("9B: #{Day09.part_b()}")
