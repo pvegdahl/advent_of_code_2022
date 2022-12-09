@@ -47,8 +47,8 @@ defmodule Day09 do
     repeated_move_all(new_positions, {vector, count - 1}, [List.last(new_positions) | tail_history])
   end
 
-  def list_of_moves(moves) do
-    Enum.reduce(moves, {[{0, 0}, {0, 0}] , []}, &my_reducer_func/2)
+  def list_of_moves(moves, rope_size \\ 2) do
+    Enum.reduce(moves, {List.duplicate({0, 0}, rope_size) , []}, &my_reducer_func/2)
   end
 
   defp my_reducer_func(move, {positions, tail_history}) do
